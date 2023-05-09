@@ -101,13 +101,20 @@ public class ModeloUsuario extends Conector{
 	prt.setInt(1, nReserva);
 	ResultSet resultado = prt.executeQuery();
 	resultado.next();
+	
 	reserva.setnReserva(resultado.getInt("n_reserva"));
 	reserva.setFecha(resultado.getDate("fecha"));
+	
+	Evento evento = new Evento();
+	evento.setcEvento(resultado.getInt("id_evento"));
+	reserva.setEvento(evento);
+	
 	Cliente cliente = new Cliente();
 	cliente.setDni(resultado.getString("DNI"));
 	cliente.setNombre(resultado.getString("nombre"));
 	cliente.setTelefono(resultado.getString("telefono"));
 	reserva.setCliente(cliente);
+	
 	return reserva;
 	}
 	
