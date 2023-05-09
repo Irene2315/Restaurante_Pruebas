@@ -48,6 +48,11 @@ body {
 	color: white;
 }
 
+input:required:invalid {
+  border-color:rgba( 46, 134, 193 ) ;
+   border-width: 5px;
+}
+
 </style>
 </head>
 <body>
@@ -65,13 +70,13 @@ body {
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
 					href="SobreNosotros.jsp">Acerca de nosotros</a></li>
-				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menú</a>
+				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
-				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicación
+				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
 				<li class="nav-item"><a href="LoginEmpleado" class="nav-link">Log
 						in</a></li>
@@ -91,9 +96,9 @@ body {
 					alt="Imagen de muestra" class="img-fluid">
 
 				<p style="color: white;">Para reservar una mesa en nuestro
-					restaurante, simplemente complete el formulario en línea o llámenos
-					directamente. Nuestro amable personal estará encantado de ayudarle
-					a encontrar la mesa perfecta para su ocasión especial o simplemente
+					restaurante, simplemente complete el formulario en linea o llamenos
+					directamente. Nuestro amable personal estara encantado de ayudarle
+					a encontrar la mesa perfecta para su ocasion especial o simplemente
 					para disfrutar de una cena inolvidable con amigos y familiares.</p>
 			</div>
 
@@ -106,53 +111,63 @@ body {
 
 						<div class="col-md-6">
 							<h1 class="fw-bold">Realizar Reserva</h1>
-
+							
 
 							<form method="get" action="CargarUsuario">
 								<p class="fw-bold">
 									Buscar dni <input type="text" name="DNI" /> <input
 										type="submit" class="btn-primary" value="Buscar">
 								</p>
+								
 							</form>
-
+							<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el usuario incorrectamente!
+    						</div>
+							</c:if>
 							<form method="POST" action="InsertarReserva">
 
 								<p class="fw-bold">
-									DNI: <input type="text" name="DNI2" value="${cliente.dni}" /><br>
+									DNI: <input type="text" name="DNI2" value="${cliente.dni}" required ><br>
 								</p>
 								<p class="fw-bold">
 									Nombre: <input type="text" name="Nombre"
-										value="${cliente.nombre}" /> <br>
+										value="${cliente.nombre}" required  /> <br>
 								</p>
 								<br>
 								<p class="fw-bold">
 									Apellido: <input type="text" name="Apellido"
-										value="${cliente.apellido}" /> <br>
+										value="${cliente.apellido}" required  /> <br>
 								</p>
 								<br>
 								<p class="fw-bold">
 									Telefono: <input type="text" name="Telefono"
-										value="${cliente.telefono}" /> <br>
+										value="${cliente.telefono}" required  /> <br>
 								</p>
 								<br>
 								<p class="fw-bold">
 									Correo: <input type="text" name="Correo"
-										value="${cliente.correo}" /> <br>
+										value="${cliente.correo}"required  /> <br>
 								</p>
 								<br>
 								<p class="fw-bold">
-									Fecha: <input type="date" name="fecha" /> <br>
+									Fecha: <input type="date" name="fecha" required /> <br>
 								</p>
-								<br> Evento_Realizar:<select name="evento">
-									<option value="0"></option>
-									<c:forEach items="${eventos}" var="evento">
-										<option value="${evento.cEvento}">${evento.nombre}</option>
-									</c:forEach>
+								<br><label for="evento">Evento a realizar:</label>
+									<select name="evento" id="evento" required>
+  											<option value=""></option>
+  											<c:forEach items="${eventos}" var="evento">
+    										<option value="${evento.cEvento}">${evento.nombre}</option>
+  										</c:forEach>
+
+								
 								</select> <input type="submit" class="btn btn-secondary" value="Reservar" />
 
 
 							</form>
-
+							
+							
+							
 							<a href="VerUsuarios" class="btn btn-primary">Volver</a>
 						</div>
 
@@ -310,7 +325,7 @@ body {
 		<!-- Copyright -->
 		<div class="text-center p-4"
 			style="background-color: rgba(0, 0, 0, 0.025);">
-			© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
+			Â© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
 		</div>
 		<!-- Copyright -->
 	</footer>

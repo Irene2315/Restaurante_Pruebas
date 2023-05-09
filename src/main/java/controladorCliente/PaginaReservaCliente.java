@@ -27,6 +27,8 @@ public class PaginaReservaCliente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+				boolean error = false;
+				request.setAttribute("error", error);
 				response.sendRedirect("VerReservas");
 	}
 

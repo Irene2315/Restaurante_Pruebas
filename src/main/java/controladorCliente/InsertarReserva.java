@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -17,6 +17,7 @@ import clases.Cliente;
 import clases.Evento;
 import clases.Reserva;
 import modeloCliente.ModeloCliente;
+import modeloUsuario.ModeloEvento;
 
 
 /**
@@ -68,6 +69,8 @@ public class InsertarReserva extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
+		
 		Cliente cliente = new Cliente();
 		
 		cliente.setDni(DNI);
@@ -82,9 +85,24 @@ public class InsertarReserva extends HttpServlet {
 		
 		Boolean encontado=clienteM.DNIExiste(DNI);
 		
+		boolean error = false;
 		if (encontado==false) {
 			
-			clienteM.registrarCliente(cliente);
+			if(DNI.length() != 9 || !DNI.substring(0,8).matches("\\d+"))  {
+				
+				error=true;
+			}
+			if(Telefono.length() != 9 || !Telefono.substring(0, 9).matches("\\d+")) {
+				error=true;
+			}
+			if(!Correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+				error=true;
+			}
+			else {
+				clienteM.registrarCliente(cliente);
+			}
+			
+			
 		}
 		
 		
@@ -100,7 +118,14 @@ public class InsertarReserva extends HttpServlet {
 		
 		clienteM.cerrar();
 		
-		response.sendRedirect("VerReservas");
+		ModeloEvento eventoM = new ModeloEvento();
+		eventoM.conectar();
+		ArrayList<Evento> eventos = eventoM.getEventos();
+		
+		eventoM.cerrar();
+		request.setAttribute("error", error);
+		request.setAttribute("eventos", eventos);
+		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
 		
 		
 		
