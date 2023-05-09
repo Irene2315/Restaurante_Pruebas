@@ -48,10 +48,7 @@ body {
 	color: white;
 }
 
-input:required:invalid {
-  border-color:rgba( 46, 134, 193 ) ;
-   border-width: 5px;
-}
+
 
 </style>
 </head>
@@ -78,8 +75,7 @@ input:required:invalid {
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="nav-link">Log
-						in</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
@@ -115,8 +111,8 @@ input:required:invalid {
 
 							<form method="get" action="CargarUsuario">
 								<p class="fw-bold">
-									Buscar dni <input type="text" name="DNI" /> <input
-										type="submit" class="btn-primary" value="Buscar">
+									Buscar dni <input type="text" name="DNI" style="margin-left: 5px;"/><br> <br> 
+									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
 								</p>
 								
 							</form>
@@ -127,33 +123,33 @@ input:required:invalid {
 							</c:if>
 							<form method="POST" action="InsertarReserva">
 
-								<p class="fw-bold">
-									DNI: <input type="text" name="DNI2" value="${cliente.dni}" required ><br>
+								<p class="fw-bold" style="margin-left: 45px;">
+									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
 								</p>
-								<p class="fw-bold">
+								<p class="fw-bold" style="margin-left: 10px;">
 									Nombre: <input type="text" name="Nombre"
-										value="${cliente.nombre}" required  /> <br>
+										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
 								</p>
-								<br>
-								<p class="fw-bold">
+								
+								<p class="fw-bold" style="margin-left: 10px;">
 									Apellido: <input type="text" name="Apellido"
-										value="${cliente.apellido}" required  /> <br>
+										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
 								</p>
-								<br>
-								<p class="fw-bold">
+								
+								<p class="fw-bold" style="margin-left: 10px;">
 									Telefono: <input type="text" name="Telefono"
-										value="${cliente.telefono}" required  /> <br>
+										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
+								</p>
+								
+								<p class="fw-bold" style="margin-left: 25px;">
+									Correo: <input type="text" name="Correo" 
+										value="${cliente.correo}" style="margin-left: 5px;"required  /> <br>
 								</p>
 								<br>
-								<p class="fw-bold">
-									Correo: <input type="text" name="Correo"
-										value="${cliente.correo}"required  /> <br>
+								<p class="fw-bold" style="margin-left: 65px;">
+									Fecha: <input type="date" name="fecha" style="margin-left: 5px;" required /> <br>
 								</p>
-								<br>
-								<p class="fw-bold">
-									Fecha: <input type="date" name="fecha" required /> <br>
-								</p>
-								<br><label for="evento">Evento a realizar:</label>
+								<br><label class="fw-bold"  for="evento" style="margin-left: 60px;">Evento:</label>
 									<select name="evento" id="evento" required>
   											<option value=""></option>
   											<c:forEach items="${eventos}" var="evento">
@@ -161,14 +157,14 @@ input:required:invalid {
   										</c:forEach>
 
 								
-								</select> <input type="submit" class="btn btn-secondary" value="Reservar" />
+								</select>  <br> <br><input type="submit" class="btn btn-secondary" value="Reservar"  style="margin-left: 150px;"/>
 
 
 							</form>
 							
 							
 							
-							<a href="VerUsuarios" class="btn btn-primary">Volver</a>
+							
 						</div>
 
 
