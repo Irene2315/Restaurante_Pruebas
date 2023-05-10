@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -83,6 +84,7 @@ public class InsertarReserva extends HttpServlet {
 		
 		clienteM.conectar();
 		
+		//hace referencia ha si un usuario esta en la base de datos
 		Boolean encontado=clienteM.DNIExiste(DNI);
 		
 		boolean error = false;
@@ -92,13 +94,28 @@ public class InsertarReserva extends HttpServlet {
 				
 				error=true;
 			}
-			if(Telefono.length() != 9 || !Telefono.substring(0, 9).matches("\\d+")) {
+			else if(Telefono.length() != 9 || !Telefono.substring(0, 9).matches("\\d+")) {
 				error=true;
 			}
-			if(!Correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+			else if(!Correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
 				error=true;
 			}
-			else {
+			
+			// obtener la fecha actual
+			LocalDate fechaActual = LocalDate.now();
+
+			// obtener la fecha ingresada en el formulario
+			String fechaUsuario = request.getParameter("fecha");
+
+			// convertir la fecha ingresada a un objeto LocalDate
+			LocalDate fechaSeleccionada = LocalDate.parse(fechaUsuario);
+
+			// verificar si la fecha seleccionada es anterior a la fecha actual
+			if (fechaSeleccionada.isBefore(fechaActual)) {
+				error=true;
+			}
+
+			if (error==false) {
 				clienteM.registrarCliente(cliente);
 			}
 			
@@ -110,11 +127,11 @@ public class InsertarReserva extends HttpServlet {
 		evento.setcEvento(idEvento);
 		
 		
-		
+		if (error==false) {
 		reserva.setCliente(cliente);
 		reserva.setEvento(evento);
 		clienteM.crearReserva(reserva);
-		
+		}
 		
 		clienteM.cerrar();
 		

@@ -118,7 +118,7 @@ body {
 							</form>
 							<c:if test="${error eq true}">
     						<div class="alert alert-danger" role="alert">
-        					Has introducido el usuario incorrectamente!
+        					Has introducido la reserva incorrectamente!
     						</div>
 							</c:if>
 							<form method="POST" action="InsertarReserva">
