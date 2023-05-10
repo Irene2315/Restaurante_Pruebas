@@ -65,7 +65,7 @@ public class InsertarReserva extends HttpServlet {
 
 		try {
 			fecha = formatFecha.parse(request.getParameter("fecha"));
-			reserva.setFecha(fecha);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,7 +88,7 @@ public class InsertarReserva extends HttpServlet {
 
 		if (error == false) {
 			Cliente cliente = new Cliente();
-
+			
 			cliente.setDni(DNI);
 			cliente.setNombre(Nombre);
 			cliente.setApellido(Apellido);
@@ -111,6 +111,7 @@ public class InsertarReserva extends HttpServlet {
 			evento.setcEvento(idEvento);
 
 			if (error == false) {
+				reserva.setFecha(fecha);
 				reserva.setCliente(cliente);
 				reserva.setEvento(evento);
 				clienteM.crearReserva(reserva);

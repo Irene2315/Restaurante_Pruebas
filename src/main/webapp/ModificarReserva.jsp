@@ -32,6 +32,11 @@
   <div class="form-container">
     <form method="POST" action="ModificarReserva">
       <h1 class="fw-bold">Modificar Reserva</h1>
+      <c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido la reserva incorrectamente!
+    						</div>
+	  </c:if>
       <p class="fw-bold">Nº Reserva:
         <input type="hidden" name="nReserva" placeholder="id" value="${reserva.nReserva}">${reserva.nReserva}
         <br>
