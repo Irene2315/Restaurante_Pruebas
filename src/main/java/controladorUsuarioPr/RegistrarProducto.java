@@ -39,7 +39,7 @@ public class RegistrarProducto extends HttpServlet {
 		} else {
 			
 			if (usuarioLogueado.getRol().getId()==(1)) {
-		request.getRequestDispatcher("VistaRegistrarProducto.jsp").forward(request, response);
+		request.getRequestDispatcher("Producto/VistaRegistrarProducto.jsp").forward(request, response);
 			}
 			else {
 				response.sendRedirect("PaginaProductos");

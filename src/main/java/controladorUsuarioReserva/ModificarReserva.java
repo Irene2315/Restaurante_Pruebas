@@ -16,7 +16,7 @@ import clases.Cliente;
 import clases.Evento;
 import clases.Reserva;
 import clases.Usuario;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 import modeloUsuario.ModeloUsuario;
 
 /**
@@ -66,7 +66,7 @@ public class ModificarReserva extends HttpServlet {
 				request.setAttribute("eventos", eventos);
 
 				request.setAttribute("reserva", reserva);
-				request.getRequestDispatcher("ModificarReserva.jsp").forward(request, response);
+				request.getRequestDispatcher("Reserva/ModificarReserva.jsp").forward(request, response);
 			}
 
 			else {

@@ -18,8 +18,7 @@ import clases.Cliente;
 import clases.Evento;
 import clases.Reserva;
 import modeloCliente.ModeloCliente;
-import modeloUsuario.ModeloEvento;
-
+import modeloEvento.ModeloEvento;
 
 /**
  * Servlet implementation class AñadirReserva
@@ -27,126 +26,109 @@ import modeloUsuario.ModeloEvento;
 @WebServlet("/InsertarReserva")
 public class InsertarReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InsertarReserva() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-		
+	public InsertarReserva() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		Reserva reserva = new Reserva();
 		ModeloCliente clienteM = new ModeloCliente();
-		
-		
+
 		String DNI = request.getParameter("DNI2");
 		String Nombre = request.getParameter("Nombre");
 		String Apellido = request.getParameter("Apellido");
 		String Telefono = request.getParameter("Telefono");
 		String Correo = request.getParameter("Correo");
-		SimpleDateFormat formatFecha = new SimpleDateFormat ("yyyy-MM-dd");
-		int idEvento =Integer.parseInt(request.getParameter("evento"));
-		
+		SimpleDateFormat formatFecha = new SimpleDateFormat("yyyy-MM-dd");
+		int idEvento = Integer.parseInt(request.getParameter("evento"));
+		Date fecha = new Date();
+
 		try {
-			Date Fecha = formatFecha.parse(request.getParameter("fecha"));
-			reserva.setFecha(Fecha);
+			fecha = formatFecha.parse(request.getParameter("fecha"));
+			reserva.setFecha(fecha);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		Cliente cliente = new Cliente();
-		
-		cliente.setDni(DNI);
-		cliente.setNombre(Nombre);
-		cliente.setApellido(Apellido);
-		cliente.setTelefono(Telefono);
-		cliente.setCorreo(Correo);
-		
-		//comprobar que el cliente existe
-		
-		clienteM.conectar();
-		
-		//hace referencia ha si un usuario esta en la base de datos
-		Boolean encontado=clienteM.DNIExiste(DNI);
-		
+
 		boolean error = false;
-		if (encontado==false) {
-			
-			if(DNI.length() != 9 || !DNI.substring(0,8).matches("\\d+"))  {
-				
-				error=true;
-			}
-			else if(Telefono.length() != 9 || !Telefono.substring(0, 9).matches("\\d+")) {
-				error=true;
-			}
-			else if(!Correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
-				error=true;
-			}
-			
-			// obtener la fecha actual
-			LocalDate fechaActual = LocalDate.now();
 
-			// obtener la fecha ingresada en el formulario
-			String fechaUsuario = request.getParameter("fecha");
+		if (DNI.length() != 9 || !DNI.substring(0, 8).matches("\\d+")) {
 
-			// convertir la fecha ingresada a un objeto LocalDate
-			LocalDate fechaSeleccionada = LocalDate.parse(fechaUsuario);
+			error = true;
+		} else if (Telefono.length() != 9 || !Telefono.substring(0, 9).matches("\\d+")) {
+			error = true;
+		} else if (!Correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+			error = true;
+		}
 
-			// verificar si la fecha seleccionada es anterior a la fecha actual
-			if (fechaSeleccionada.isBefore(fechaActual)) {
-				error=true;
-			}
+		else if (fecha.before(new Date())) {
+			error = true;
+		}
 
-			if (error==false) {
+		if (error == false) {
+			Cliente cliente = new Cliente();
+
+			cliente.setDni(DNI);
+			cliente.setNombre(Nombre);
+			cliente.setApellido(Apellido);
+			cliente.setTelefono(Telefono);
+			cliente.setCorreo(Correo);
+
+			// comprobar que el cliente existe
+
+			clienteM.conectar();
+
+			// hace referencia ha si un usuario esta en la base de datos
+
+			Boolean encontado = clienteM.DNIExiste(DNI);
+			if (encontado == false) {
 				clienteM.registrarCliente(cliente);
+
 			}
-			
-			
+
+			Evento evento = new Evento();
+			evento.setcEvento(idEvento);
+
+			if (error == false) {
+				reserva.setCliente(cliente);
+				reserva.setEvento(evento);
+				clienteM.crearReserva(reserva);
+			}
+
+			clienteM.cerrar();
+
 		}
-		
-		
-		Evento evento = new Evento();
-		evento.setcEvento(idEvento);
-		
-		
-		if (error==false) {
-		reserva.setCliente(cliente);
-		reserva.setEvento(evento);
-		clienteM.crearReserva(reserva);
-		}
-		
-		clienteM.cerrar();
-		
 		ModeloEvento eventoM = new ModeloEvento();
 		eventoM.conectar();
 		ArrayList<Evento> eventos = eventoM.getEventos();
-		
+
 		eventoM.cerrar();
+
 		request.setAttribute("error", error);
 		request.setAttribute("eventos", eventos);
-		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
-		
-		
-		
-		
+		request.getRequestDispatcher("PaginaCliente/VistaReservaCliente.jsp").forward(request, response);
+
 	}
 
 }

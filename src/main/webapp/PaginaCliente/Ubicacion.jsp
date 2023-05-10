@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +22,22 @@ body {
 	color: white;
 }
 
+.carousel-control-prev-icon {
+	padding: 5px;
+	background-color: gray;
+	box-shadow: 0px 0px 10px black;
+	color: black !important;
+	background-color: gray;
+}
+
+.carousel-control-next-icon {
+	padding: 5px;
+	background-color: gray;
+	box-shadow: 0px 0px 10px black;
+	color: black !important;
+	background-color: gray;
+}
+
 .navbar {
 	overflow: hidden;
 	position: fixed; /* Set the navbar to fixed position */
@@ -39,39 +54,8 @@ body {
 	color: black;
 }
 
-.navbar-toggler-icon {
-	color: red;
-	z-index: 4;
-}
-
-.card {
-	position: relative;
-	overflow: hidden;
-	margin-top: 20px;
-}
-
-.card-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: #fff;
-	opacity: 0;
-	transition: opacity 0.5s ease;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.card:hover .card-overlay {
-	opacity: 1;
-}
-
-.card-text {
-	text-align: center;
-	font-size: 1rem;
+.ubicacion {
+	margin-top: 70px;
 }
 </style>
 </head>
@@ -94,7 +78,7 @@ body {
 				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="PaginaReservaCliente">Reservas</a></li>
+					href="../PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
@@ -108,110 +92,55 @@ body {
 
 	<!-- Página de inicio -->
 	<header class="jumbotron jumbotron-fluid bg-black">
-		<br> <br> <br> <br>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h1>Eventos Especiales</h1>
-					<p>En nuestro restaurante no solo nos enfocamos en brindar
-						deliciosas comidas y cenas, sino que también estamos preparados
-						para hacer de tus eventos especiales una experiencia inolvidable.
-						Desde bodas y bautizos hasta fiestas de cumpleaños y reuniones
-						empresariales, estamos equipados para crear un ambiente elegante y
-						acogedor que dejará una impresión duradera en tus invitados.
-						Nuestro equipo de profesionales está dispuesto a ayudarte a
-						planificar y coordinar todos los detalles de tu evento para que
-						puedas disfrutar de una celebración sin preocupaciones. Ya sea que
-						busques una cena íntima o una gran fiesta, nuestro restaurante es
-						el lugar perfecto para celebrar tus momentos más importantes.</p>
-				</div>
-			</div>
-		
-		
-			<div class="row">
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top"
-							src="https://s1.1zoom.me/b5050/145/350089-admin_1920x1080.jpg"
-							alt="Imagen de ejemplo">
-						<div class="card-overlay">
-							<div class="row">
-								<div class="col-md-12 text-center">
-									<h1>BODAS</h1>
-									<p class="card-text text-center">En nuestro restaurante,
-										ofrecemos una experiencia única y memorable para su boda.
-										Contamos con un equipo de expertos en eventos que se encargará
-										de cada detalle para asegurarnos de que su día especial sea
-										perfecto. Ofrecemos opciones de menú personalizadas para
-										satisfacer los gustos y necesidades de todos sus invitados.</p>
-								</div>
-							</div>
+		<div class="ubicacion">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h2>Ubicación</h2>
+						<p>Nuestro restaurante está ubicado en la hermosa concha,
+							justo al lado de la playa. Esta ubicación privilegiada nos
+							permite ofrecer a nuestros clientes una experiencia culinaria
+							inolvidable en un ambiente único y exclusivo.</p>
 
-						</div>
+						<h2>Cómo llegar</h2>
+						<p>Puede llegar al restaurante en coche o en transporte
+							público. Si viene en coche, puede utilizar la siguiente dirección
+							para su GPS: Kontxa Pasealekua, s/n Paseo de La Concha, s/n
+							Edificio La Perla, Kontxa Pasealekua, 16, 20007 Donostia,
+							Gipuzkoa. También puede llegar en autobús, con la parada más
+							cercana a solo unos minutos a pie del restaurante.</p>
+					</div>
+					<div class="col-md-4">
+						<h2>Horarios</h2>
+						<p>
+							<strong>Lunes a jueves:</strong> de 12:00 pm a 3:00 pm y de 7:00
+							pm a 11:00 pm
+						</p>
+						<p>
+							<strong>Viernes y sábados:</strong> de 12:00 pm a 3:00 pm y de
+							7:00 pm a 12:00 am
+						</p>
+						<p>
+							<strong>Domingos:</strong> de 12:00 pm a 3:00 pm y de 7:00 pm a
+							11:00 pm
+						</p>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top"
-							src="https://grupo1844.com/wp-content/uploads/2022/09/slider-transporte-cenas-empresa.jpg"
-							alt="Imagen de ejemplo">
-						<div class="card-overlay">
-							<div class="row">
-								<div class="col-md-12 text-center">
-									<h1>CENA EMPRESA</h1>
-									<p class="card-text text-center">En nuestro restaurante,
-										ofrecemos la opción perfecta para su evento de fin de año.
-										Nuestras cenas de empresa son la forma ideal para celebrar el
-										éxito de su empresa y disfrutar de una deliciosa comida en un
-										ambiente relajado y acogedor.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top"
-							src="https://migueldomecq.com/wp-content/uploads/2022/03/Que-incluye-una-cata-de-vino-en-Jerez.-En-que-consiste.jpg"
-							alt="Imagen de ejemplo">
-						<div class="card-overlay">
-							<div class="row">
-								<div class="col-md-12 text-center">
-									<h1>CATA VINOS</h1>
-									<p class="card-text text-center">¿Eres un amante del vino y
-										quieres descubrir nuevos sabores y aromas? En nuestro
-										restaurante ofrecemos experiencias de cata de vinos para que
-										puedas disfrutar de una selección de los mejores vinos de la
-										región.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-					<div class="col-md-6">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2022/03/primera-comunion-2661919.jpg"
-								alt="Imagen de ejemplo">
-							<div class="card-overlay">
-								<div class="row">
-									<div class="col-md-12 text-center">
-										<h1>COMUNION</h1>
-										<p class="card-text text-center">Celebre la Primera
-											Comunión de su hijo o hija en nuestro restaurante y disfrute
-											de una experiencia inolvidable. Nos aseguraremos de que el
-											día de su hijo o hija sea especial y memorable al ofrecer
-											opciones de menú adaptadas a las necesidades de los más
-											pequeños y a sus invitados adultos.</p>
-									</div>
-								</div>
+
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="mapa">
+							<h2>Mapa</h2>
+							<div class="d-flex justify-content-center">
+								<iframe
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1410.1572701887817!2d-1.991576532071527!3d43.31517957430266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51baab3c59e249%3A0x15584aada0b2ae25!2sLa%20Perla%20Bar%20Restaurante!5e0!3m2!1ses!2ses!4v1683395088640!5m2!1ses!2ses"
+									width="100%" height="450" style="border: 0;"></iframe>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-
+		</div>
 
 		<br> <br> <br> <br>
 	</header>

@@ -11,7 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import clases.Evento;
 import clases.Usuario;
-import modeloUsuario.ModeloUsuario;
+import modeloEvento.ModeloEvento;
+
 
 /**
  * Servlet implementation class InsertarEvento
@@ -33,7 +34,7 @@ public class InsertarEvento extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("VistaEventos.jsp").forward(request, response);
+		request.getRequestDispatcher("Evento/VistaEventos.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,15 +47,15 @@ public class InsertarEvento extends HttpServlet {
 			
 			if (usuarioLogueado.getRol().getId()==(1)) {
 		Evento evento = new Evento();
-		ModeloUsuario modeloUsuario = new ModeloUsuario();
+		ModeloEvento modeloevento = new ModeloEvento();
 		
 		String nombre = request.getParameter("nombre");
 		
 		evento.setNombre(nombre);
 		
-		modeloUsuario.conectar();
-		modeloUsuario.insertarEvento(evento);
-		modeloUsuario.cerrar();
+		modeloevento.conectar();
+		modeloevento.insertarEvento(evento);
+		modeloevento.cerrar();
 		response.sendRedirect("VerEventos");
 			}
 			else {

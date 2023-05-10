@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import clases.Evento;
 import clases.Reserva;
 import modeloCliente.ModeloCliente;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 
 /**
  * Servlet implementation class VerReservas
@@ -59,7 +59,7 @@ public class VerReservas extends HttpServlet {
 		request.setAttribute("reservas", reservas);
 		request.setAttribute("eventos", eventos);
 		
-		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("PaginaCliente/VistaReservaCliente.jsp").forward(request, response);
 		
 	}
 

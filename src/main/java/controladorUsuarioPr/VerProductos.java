@@ -49,7 +49,7 @@ public class VerProductos extends HttpServlet {
 		
 		request.setAttribute("productos", productos);
 		
-		request.getRequestDispatcher("VistaProductos.jsp").forward(request, response);
+		request.getRequestDispatcher("Producto/VistaProductos.jsp").forward(request, response);
 		
 		}
 	}

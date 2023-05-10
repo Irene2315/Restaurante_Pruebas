@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import clases.Cliente;
 import clases.Evento;
 import modeloCliente.ModeloCliente;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 
 /**
  * Servlet implementation class CargarUsuario
@@ -52,7 +52,7 @@ public class CargarUsuario extends HttpServlet {
 		request.setAttribute("cliente", cliente);
 		request.setAttribute("eventos", eventos);
 		
-		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("PaginaCliente/VistaReservaCliente.jsp").forward(request, response);
 		
 	}
 	/**

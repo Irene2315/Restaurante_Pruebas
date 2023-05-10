@@ -12,82 +12,16 @@ import clases.Reserva;
 import clases.RolUsuario;
 import clases.Usuario;
 import conexion.Conector;
+import modeloEvento.ModeloEvento;
 
 public class ModeloUsuario extends Conector{
 	/**
 
 	Base de datos de usuarios y gestion de reservas
 	*/
-	/**
-
-	Inserta un evento nuevo en la BDD
-	@param evento: Recibira el objeto evento que se insertara en la BDD
-	*/
+	
 	PreparedStatement prt;
-	public void insertarEvento(Evento evento) {
-	try {
-	prt = con.prepareStatement("INSERT INTO eventos (nombre) VALUES(?)");
-	prt.setString(1, evento.getNombre());
-	prt.execute();
-	} catch (Exception e) {
-	// TODO: handle exception
-	}
-	}
-	/**
-
-	Elimina un evento de la BDD
-	@param c_evento: Recibe el codigo del evento y elimina el objeto asociado
-	*/
-	public void eliminarEvento(int c_evento) {
-	try {
-	prt = con.prepareStatement("DELETE FROM eventos WHERE c_evento = ?");
-	prt.setInt(1, c_evento);
-	prt.execute();
-	} catch (Exception e) {
-	// TODO: handle exception
-	}
-	}
-	/**
-
-	Obtiene el evento asociado al codigo de evento
-	@param cEvento: Recibe el codigo de evento para obtener el objeto asociado
-	@return evento: Devuelve el objeto evento asociado al codigo del evento
-	@throws SQLException: En caso de error envia el error al padre
-	*/
-	public Evento getEvento(int cEvento) throws SQLException {
-	Evento evento = new Evento();
-	prt = con.prepareStatement("SELECT * FROM eventos WHERE c_evento=?");
-	prt.setInt(1, cEvento);
-	ResultSet resultado = prt.executeQuery();
-	resultado.next();
-	evento.setcEvento(resultado.getInt("c_evento"));
-	evento.setNombre(resultado.getString("nombre"));
-	return evento;
-	}
-
-	/**
-
-	Obtiene todos los eventos de la BDD
-	@return eventos: Devuelve los eventos de la BDD
-	*/
-	public ArrayList<Evento> getEventos() {
-	ArrayList <Evento> eventos = new ArrayList <>();
-	Evento evento = new Evento();
-	try {
-	prt = con.prepareStatement("SELECT * FROM eventos");
-	ResultSet resultado = prt.executeQuery();
-	while(resultado.next()) {
-	evento = new Evento();
-	evento.setcEvento(resultado.getInt(1));
-	evento.setNombre(resultado.getString(2));
-	eventos.add(evento);
-	}
-	} catch (SQLException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-	}
-	return eventos;
-	}
+	
 	/**
 
 	Obtiene la reserva asociada al numero de reserva

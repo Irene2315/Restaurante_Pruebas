@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import clases.Evento;
 import clases.Reserva;
 import clases.Usuario;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 import modeloUsuario.ModeloUsuario;
 
 
@@ -64,7 +64,7 @@ public class ReservasU extends HttpServlet {
 		request.setAttribute("eventos", eventos);
 		
 		
-		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("Reserva/VistaReservaUsuario.jsp").forward(request, response);
 		}
 		
 	}

@@ -57,7 +57,7 @@ public class VerPlato extends HttpServlet {
 		//request.setAttribute("productos", productos);
 		request.setAttribute("plato", plato);
 		
-		request.getRequestDispatcher("VistaPlato.jsp").forward(request, response);	
+		request.getRequestDispatcher("Plato/VistaPlato.jsp").forward(request, response);	
 		}
 	}
 

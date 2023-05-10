@@ -10,7 +10,7 @@ import java.sql.Date;
 import clases.Cliente;
 import clases.Reserva;
 import conexion.Conector;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 
 
 public class ModeloCliente extends Conector{
