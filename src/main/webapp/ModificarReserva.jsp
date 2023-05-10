@@ -38,24 +38,24 @@
     						</div>
 	  </c:if>
       <p class="fw-bold">Nº Reserva:
-        <input type="hidden" name="nReserva" placeholder="id" value="${reserva.nReserva}">${reserva.nReserva}
+        <input type="hidden" name="nReserva"  value="${reserva.nReserva}"required>${reserva.nReserva}
         <br>
       </p>
       <p class="fw-bold">Fecha:
-        <input type="date" name="fecha" placeholder="fecha" value="${reserva.fecha}">
+        <input type="date" name="fecha"  value="${reserva.fecha}" required>
       </p>
       <p class="fw-bold">DNI:
-        <input type="hidden" name="dni" placeholder="dni" value="${reserva.cliente.dni}">${reserva.cliente.dni}
+        <input type="hidden" name="dni"  value="${reserva.cliente.dni}" required>${reserva.cliente.dni}
       </p>
       <p class="fw-bold">Nombre:
-        <input type="text" name="nombre" placeholder="nombre" value="${reserva.cliente.nombre}">
+        <input type="text" name="nombre"  value="${reserva.cliente.nombre}" required>
       </p>
       <p class="fw-bold">Telefono:
-        <input type="text" name="telefono" placeholder="telefono" value="${reserva.cliente.telefono}">
+        <input type="text" name="telefono" value="${reserva.cliente.telefono}" required>
       </p>
       <p class="fw-bold">Eventos:
-        <select name="evento">
-          <option value="0"></option>
+        <select name="evento" required>
+          <option value="" ></option>
           <c:forEach items="${eventos}" var="evento">
             <c:if test="${evento.cEvento == reserva.evento.cEvento}">
               <option value="${evento.cEvento}" selected> ${evento.nombre} </option>

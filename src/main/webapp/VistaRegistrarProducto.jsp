@@ -33,23 +33,27 @@
 	<div class="container">
 		<div class="form-container">
 			<h1 class="fw-bold">Registrar Producto</h1>
-
+			 <c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el producto incorrectamente!
+    						</div>
+	  		</c:if>
 			<form method="POST" action="RegistrarProducto">
 
 				<p>
-					<b>Nombre:</b> <input type="text" name="nombre" /> <br>
+					<b>Nombre:</b> <input type="text" name="nombre" required /> <br>
 				</p>
 				<br>
 				<p>
-					<b>Calorías:(KCAL)</b> <input type="text" name="calorias" /> <br>
+					<b>Calorías:(KCAL)</b> <input type="text" name="calorias" required/> <br>
 				</p>
 				<br>
 				<p>
-					<b>Proteínas:(G)</b> <input type="text" name="proteinas" /> <br>
+					<b>Proteínas:(G)</b> <input type="text" name="proteinas" required/> <br>
 				</p>
 				<br>
 				<p>
-					<b>Cantidad:</b> <input type="text" name="cantidad" /> <br>
+					<b>Cantidad:</b> <input type="text" name="cantidad" required/> <br>
 				</p>
 				<br>
 				<p>

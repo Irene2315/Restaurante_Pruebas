@@ -75,7 +75,7 @@
 
 
 							<p>
-								Nombre: <input type="text" name="nombre" /> <br>
+								Nombre: <input type="text" name="nombre" required/> <br>
 							</p>
 							<br> <input type="submit" class="btn btn-secondary"
 								value="Insertar" />

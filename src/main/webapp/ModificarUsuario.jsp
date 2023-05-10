@@ -44,31 +44,31 @@
 				</p>
 
 				<p class="fw-bold">
-					Nombre: <input type="text" name="nombre" value="${usuario.nombre}" />
+					Nombre: <input type="text" name="nombre" value="${usuario.nombre}" required />
 					<br>
 				</p>
 				<br>
 				<p class="fw-bold">
 					Apellido: <input type="text" name="apellido"
-						value="${usuario.apellido}" /> <br>
+						value="${usuario.apellido}" required /> <br>
 				</p>
 				<p class="fw-bold">
 					Contraseña: <input type="text" name="contrasena"
-						value="${usuario.contrasena}" /> <br>
+						value="${usuario.contrasena}" required /> <br>
 				</p>
 				<br>
 				<p class="fw-bold">
 					Telefono: <input type="text" name="telefono"
-						value="${usuario.telefono}" /> <br>
+						value="${usuario.telefono}" required /> <br>
 				</p>
 				<br>
 				<p class="fw-bold">
 					CorreoTrabajo: <input type="text" name="correoTrabajo"
-						value="${usuario.correoTrabajo}" /> <br>
+						value="${usuario.correoTrabajo}" required  /> <br>
 				</p>
 				<br>
 				<p>
-					Trabajos: <select name="rol">
+					Trabajos: <select name="rol" required >
 						<option value="0"></option>
 						<c:forEach items="${roles}" var="rol">
 							<c:if test="${rol.id == usuario.rol.id}">
