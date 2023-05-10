@@ -57,7 +57,7 @@
 				</p>
 				<br>
 				<p>
-					<b>Precio:</b> <input type="text" name="precio" /> <br>
+					<b>Precio:</b> <input type="text" name="precio" required/> <br>
 				</p>
 				<br> <input type="submit" class="btn btn-secondary"
 					value="Guardar" /> <a href="VerProductos" class="btn btn-dark">Volver</a>

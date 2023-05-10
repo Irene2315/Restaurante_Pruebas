@@ -33,7 +33,8 @@ public class ModificarProducto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
-
+		boolean error =false;
+		
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("PaginaReservaCliente");
 		} else {
@@ -50,6 +51,7 @@ public class ModificarProducto extends HttpServlet {
 		usuarioM.cerrar();
 		
 		request.setAttribute("producto", producto);
+		request.setAttribute("error", error);
 		
 		request.getRequestDispatcher("VistaModificarProducto.jsp").forward(request, response);
 			}
@@ -66,20 +68,28 @@ public class ModificarProducto extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int cProducto = Integer.parseInt(request.getParameter("cProducto"));
-		String nombre = request.getParameter("nombre");
-		double calorias = Double.parseDouble(request.getParameter("calorias"));
-		double proteinas = Double.parseDouble(request.getParameter("proteinas"));
-		int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-		double precio = Double.parseDouble(request.getParameter("precio"));
+		String nombre =request.getParameter("nombre");
+		String calorias = request.getParameter("calorias");
+		String proteinas = request.getParameter("proteinas");
+		String cantidad = request.getParameter("cantidad");
+		String precio = request.getParameter("precio");
+		boolean error =false;
+		
+		if (true==esDouble(calorias) || true==esDouble(proteinas) ||
+			true==esInt(cantidad) || true==esDouble(precio))
+		{
+				error=true;
+		}					
 		
 		
-		Producto producto = new Producto();
+		if(error==false) {
+		Producto producto = new Producto ();
 		producto.setcProducto(cProducto);
 		producto.setNombre(nombre);
-		producto.setCalorias(calorias);
-		producto.setProteinas(proteinas);
-		producto.setCantidad(cantidad);
-		producto.setPrecio(precio);
+		producto.setCalorias(Double.parseDouble(calorias));
+		producto.setProteinas(Double.parseDouble(proteinas));
+		producto.setCantidad(Integer.parseInt(cantidad));
+		producto.setPrecio(Double.parseDouble(precio));
 		
 		
 		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
@@ -90,13 +100,42 @@ public class ModificarProducto extends HttpServlet {
 		usuarioM.cerrar();
 		
 		response.sendRedirect("VerProductos");
-		
-		
-		
-		
-		
+		}
+		else {
+			int cProducto2 = Integer.parseInt(request.getParameter("cProducto"));
+			
+			ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
+			usuarioM.conectar();
+			
+			Producto producto = usuarioM.getProducto(cProducto2);
+			
+			usuarioM.cerrar();
+			
+			request.setAttribute("producto", producto);
+			request.setAttribute("error", error);
+			
+			request.getRequestDispatcher("VistaModificarProducto.jsp").forward(request, response);
+		}
 		
 	
+	}
+	
+	public static boolean esDouble(String stringDouble) {
+	    try {
+	        double d = Double.parseDouble(stringDouble);
+	    } catch (NumberFormatException nfe) {
+	        return true; //Error no es numerico
+	    }
+	    return false; //Es numerico
+	}
+	
+	public static boolean esInt(String stringInt) {
+	    try {
+	        int d =Integer.parseInt(stringInt) ;
+	    } catch (NumberFormatException nfe) {
+	        return true; //Error no es numerico
+	    }
+	    return false; //Es numerico
 	}
 
 }

@@ -60,11 +60,11 @@ public class RegistrarProducto extends HttpServlet {
 		String precio = request.getParameter("precio");
 		boolean error =false;
 		
-		error=esDouble(calorias);
-		error=esDouble(proteinas);
-		error=esInt(cantidad);
-		error=esDouble(precio);
-		
+		if (true==esDouble(calorias) || true==esDouble(proteinas) ||
+				true==esInt(cantidad) || true==esDouble(precio))
+			{
+					error=true;
+			}	
 		
 		
 		if(error==false) {
@@ -103,7 +103,7 @@ public class RegistrarProducto extends HttpServlet {
 	
 	public static boolean esInt(String stringInt) {
 	    try {
-	        double d =Integer.parseInt(stringInt) ;
+	        int d =Integer.parseInt(stringInt) ;
 	    } catch (NumberFormatException nfe) {
 	        return true; //Error no es numerico
 	    }

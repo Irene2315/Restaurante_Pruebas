@@ -132,22 +132,22 @@ body {
 									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
 								</p>
 								<p class="fw-bold" style="margin-left: 1px;">
-									Nombre: <input type="text" name="Nombre"
+									Nombre: <input type="text" name="nombre"
 										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
 								</p>
 								
 								<p class="fw-bold" style="margin-left: 1px;">
-									Apellido: <input type="text" name="Apellido"
+									Apellido: <input type="text" name="apellido"
 										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
 								</p>
 								
 								<p class="fw-bold" style="margin-left: 1px;">
-									Telefono: <input type="text" name="Telefono"
+									Telefono: <input type="text" name="telefono"
 										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
 								</p>
 								
 								<p class="fw-bold" style="margin-left: 1px;">
-									Correo: <input type="text" name="Correo" 
+									Correo: <input type="text" name="correo" 
 										value="${cliente.correo}" style="margin-left: 20px;"required  /> <br>
 								</p>
 								<br>

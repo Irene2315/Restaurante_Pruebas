@@ -135,10 +135,10 @@ public class ModificarReserva extends HttpServlet {
 		else {
 			ModeloUsuario modeloUsuario = new ModeloUsuario();
 			Reserva reserva = new Reserva();
-			int nReserva_2 = Integer.parseInt(request.getParameter("nReserva"));
+			int nReserva2 = Integer.parseInt(request.getParameter("nReserva"));
 			try {
 				modeloUsuario.conectar();
-				reserva = modeloUsuario.getReserva(nReserva_2);
+				reserva = modeloUsuario.getReserva(nReserva2);
 				modeloUsuario.cerrar();
 			} catch (Exception e) {
 				// TODO: handle exception
