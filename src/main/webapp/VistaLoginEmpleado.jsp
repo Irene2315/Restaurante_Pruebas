@@ -12,11 +12,11 @@
 	crossorigin="anonymous">
 
 </head>
-<body>
-
-  <div class="container py-5 h-100" style="
+<body style="
   background-image: url('https://enlacocina.b-cdn.net/wp-content/uploads/2018/02/maitre.jpg'); 
   background-repeat: no-repeat; background-size: cover;">
+
+  <div class="container py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
