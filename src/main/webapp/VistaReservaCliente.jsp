@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herrero Martinez - Restaurante de lujo</title>
+<!-- Enlaces a los archivos de Bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -20,8 +21,17 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
 body {
-	background-color:#1C1C1C;
+	background-color: #1C1C1C;
 	color: white;
+}
+
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: #373737;
+	color: white;
+	margin-bottom: 50px;
 }
 
 .navbar {
@@ -39,20 +49,13 @@ body {
 .nav-link:hover {
 	color: black;
 }
-
-.form-container {
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	background-color: #373737;
-	color: white;
-}
-
-
-
 </style>
+
+
+
 </head>
 <body>
+	<!-- Barra de navegación -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="PaginaInicialCliente.jsp"
 			style="margin-left: 10px;">Herrero Martinez</a>
@@ -75,15 +78,18 @@ body {
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
+				<li class="nav-item"><a href="LoginEmpleado"
+					class="btn btn-dark" style="margin-left: 380px; color: white;">SESION
+						EMPLEADO</a></li>
 
 			</ul>
 		</div>
 	</nav>
+
 	<section style="margin-top: 100px;">
 
 		<!-- Fila principal -->
-		<div class="row">
+		<div class="row" style="width:100%;">
 
 			<!-- Columna con imagen y texto -->
 			<div class="col-12 col-lg-6 text-center">
@@ -102,10 +108,10 @@ body {
 			<div class="col-12 col-lg-6">
 
 				<div class="form-container">
-					<div class="row">
+					<div class="row" >
 
 
-						<div class="col-md-6">
+						<div class="col-lg-6">
 							<h1 class="fw-bold">Realizar Reserva</h1>
 							
 
@@ -168,7 +174,7 @@ body {
 						</div>
 
 
-						<div class="col-md-6">
+						<div class="col-lg-6">
 							<h1 class="fw-bold">Ver Reservas</h1>
 
 							<form method="get" action="VerReservas">
@@ -219,9 +225,8 @@ body {
 		</div>
 
 	</section>
-
-
-	<footer class="text-center text-lg-start bg-white text-muted" style="margin-top:100px;">
+	<!-- Footer -->
+	<footer class="text-center text-lg-start bg-white text-muted">
 		<!-- Section: Social media -->
 		<section
 			class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -328,3 +333,4 @@ body {
 	<!-- Footer -->
 </body>
 </html>
+

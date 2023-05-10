@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import clases.Evento;
 import clases.Reserva;
 import modeloCliente.ModeloCliente;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 
 /**
  * Servlet implementation class VerReservas

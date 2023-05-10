@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import clases.Usuario;
-import modeloUsuario.ModeloUsuario;
+import modeloEvento.ModeloEvento;
+
 
 /**
  * Servlet implementation class EliminarEvento
@@ -37,10 +38,10 @@ public class EliminarEvento extends HttpServlet {
 			if (usuarioLogueado.getRol().getId()==(1)) {
 		int cEvento = Integer.parseInt(request.getParameter("c_evento"));
 		
-		ModeloUsuario modeloUsuario = new ModeloUsuario();
-		modeloUsuario.conectar();
-		modeloUsuario.eliminarEvento(cEvento);
-		modeloUsuario.cerrar();
+		ModeloEvento modeloevento = new ModeloEvento();
+		modeloevento.conectar();
+		modeloevento.eliminarEvento(cEvento);
+		modeloevento.cerrar();
 		
 		response.sendRedirect("VerEventos");
 	}

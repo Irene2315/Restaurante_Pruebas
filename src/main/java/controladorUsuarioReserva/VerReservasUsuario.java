@@ -14,7 +14,7 @@ import clases.Evento;
 import clases.Reserva;
 import clases.Usuario;
 import modeloCliente.ModeloCliente;
-import modeloUsuario.ModeloEvento;
+import modeloEvento.ModeloEvento;
 
 /**
  * Servlet implementation class VerReservasUsuario

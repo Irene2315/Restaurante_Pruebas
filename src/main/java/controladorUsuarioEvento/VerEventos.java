@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import clases.Evento;
 import clases.Usuario;
-import modeloUsuario.ModeloUsuario;
+import modeloEvento.ModeloEvento;
+
 
 /**
  * Servlet implementation class VerEventos
@@ -39,13 +40,13 @@ public class VerEventos extends HttpServlet {
 			response.sendRedirect("PaginaReservaCliente");
 		}else {
 			
-			ModeloUsuario modeloUsuario = new ModeloUsuario();
-			modeloUsuario.conectar();
+			ModeloEvento modeloevento = new ModeloEvento();
+			modeloevento.conectar();
 			
-			ArrayList <Evento> eventos = modeloUsuario.getEventos();				
-			eventos = modeloUsuario.getEventos();
+			ArrayList <Evento> eventos = modeloevento.getEventos();				
+			eventos = modeloevento.getEventos();
 			
-			modeloUsuario.cerrar();
+			modeloevento.cerrar();
 			
 			request.setAttribute("eventos", eventos);
 			session.setAttribute("usuarioLogueado", usuarioLogueado);
