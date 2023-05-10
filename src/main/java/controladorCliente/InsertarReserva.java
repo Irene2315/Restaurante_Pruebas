@@ -61,10 +61,11 @@ public class InsertarReserva extends HttpServlet {
 		String Correo = request.getParameter("Correo");
 		SimpleDateFormat formatFecha = new SimpleDateFormat ("yyyy-MM-dd");
 		int idEvento =Integer.parseInt(request.getParameter("evento"));
+		Date fecha = new Date();
 		
 		try {
-			Date Fecha = formatFecha.parse(request.getParameter("fecha"));
-			reserva.setFecha(Fecha);
+			fecha = formatFecha.parse(request.getParameter("fecha"));
+			reserva.setFecha(fecha);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,17 +102,8 @@ public class InsertarReserva extends HttpServlet {
 				error=true;
 			}
 			
-			// obtener la fecha actual
-			LocalDate fechaActual = LocalDate.now();
-
-			// obtener la fecha ingresada en el formulario
-			String fechaUsuario = request.getParameter("fecha");
-
-			// convertir la fecha ingresada a un objeto LocalDate
-			LocalDate fechaSeleccionada = LocalDate.parse(fechaUsuario);
-
-			// verificar si la fecha seleccionada es anterior a la fecha actual
-			if (fechaSeleccionada.isBefore(fechaActual)) {
+			
+			else if (fecha.before(new Date())) {
 				error=true;
 			}
 
