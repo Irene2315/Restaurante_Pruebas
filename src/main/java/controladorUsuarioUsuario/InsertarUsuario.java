@@ -53,7 +53,7 @@ public class InsertarUsuario extends HttpServlet {
 		
 		//enviamos los roles y cargamos la vista
 		request.setAttribute("roles", roles);
-		request.getRequestDispatcher("Usuario/RegistrarUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("RegistrarUsuario.jsp").forward(request, response);
 	}
 			else {
 				response.sendRedirect("PaginaUsuario");

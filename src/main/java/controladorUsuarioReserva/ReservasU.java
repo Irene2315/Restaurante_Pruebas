@@ -64,7 +64,7 @@ public class ReservasU extends HttpServlet {
 		request.setAttribute("eventos", eventos);
 		
 		
-		request.getRequestDispatcher("Reserva/VistaReservaUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
 		}
 		
 	}

@@ -51,7 +51,7 @@ public class ModificarProducto extends HttpServlet {
 		
 		request.setAttribute("producto", producto);
 		
-		request.getRequestDispatcher("Producto/VistaModificarProducto.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaModificarProducto.jsp").forward(request, response);
 			}
 			else {
 				response.sendRedirect("PaginaProductos");

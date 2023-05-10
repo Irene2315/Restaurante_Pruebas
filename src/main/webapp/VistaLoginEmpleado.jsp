@@ -49,7 +49,7 @@
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Acceder</button>
               <br>
               <br>
-             <a href="VerProductos" class="btn btn-outline-light btn-lg px-5" >Volver  </a>
+             <a href="PaginaInicialCliente.jsp" class="btn btn-outline-light btn-lg px-5" >Volver  </a>
               
 
               </form>

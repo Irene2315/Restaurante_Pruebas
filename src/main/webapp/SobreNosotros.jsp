@@ -22,40 +22,44 @@ body {
 	color: white;
 }
 
-.carousel-control-prev-icon {
-	padding: 5px;
-	background-color: gray;
-	box-shadow: 0px 0px 10px black;
-	color: black !important;
-	background-color: gray;
-}
-
-.carousel-control-next-icon {
-	padding: 5px;
-	background-color: gray;
-	box-shadow: 0px 0px 10px black;
-	color: black !important;
-	background-color: gray;
-}
-
 .navbar {
 	overflow: hidden;
 	position: fixed; /* Set the navbar to fixed position */
 	top: 0; /* Position the navbar at the top of the page */
 	width: 100%; /* Full width */
 	z-index: 3;
-}
 
+}
+.navbar-band{
+	padding: 40%;
+}
 .navbar a {
 	color: black;
+
 }
 
 .nav-link:hover {
 	color: black;
 }
+.carta{
+	margin-bottom:20px;
+}
+.card-body{
+	background-color: #3f3f3f;
+	
+}
+.card-text {
+	color: white;
+}
 
-.ubicacion {
-	margin-top: 70px;
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease-in-out;
+}
+
+.col h1 p {
+	color: white;
 }
 </style>
 </head>
@@ -78,69 +82,92 @@ body {
 				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="../PaginaReservaCliente">Reservas</a></li>
+					href="PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="../LoginEmpleado" class="btn btn-dark" style="color:white;">SESION EMPLEADO</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
 	</nav>
-
+	
 
 	<!-- Página de inicio -->
 	<header class="jumbotron jumbotron-fluid bg-black">
-		<div class="ubicacion">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<h2>Ubicación</h2>
-						<p>Nuestro restaurante está ubicado en la hermosa concha,
-							justo al lado de la playa. Esta ubicación privilegiada nos
-							permite ofrecer a nuestros clientes una experiencia culinaria
-							inolvidable en un ambiente único y exclusivo.</p>
 
-						<h2>Cómo llegar</h2>
-						<p>Puede llegar al restaurante en coche o en transporte
-							público. Si viene en coche, puede utilizar la siguiente dirección
-							para su GPS: Kontxa Pasealekua, s/n Paseo de La Concha, s/n
-							Edificio La Perla, Kontxa Pasealekua, 16, 20007 Donostia,
-							Gipuzkoa. También puede llegar en autobús, con la parada más
-							cercana a solo unos minutos a pie del restaurante.</p>
-					</div>
-					<div class="col-md-4">
-						<h2>Horarios</h2>
-						<p>
-							<strong>Lunes a jueves:</strong> de 12:00 pm a 3:00 pm y de 7:00
-							pm a 11:00 pm
-						</p>
-						<p>
-							<strong>Viernes y sábados:</strong> de 12:00 pm a 3:00 pm y de
-							7:00 pm a 12:00 am
-						</p>
-						<p>
-							<strong>Domingos:</strong> de 12:00 pm a 3:00 pm y de 7:00 pm a
-							11:00 pm
-						</p>
+		<br> <br> <br>
+		<br>
+
+		<div class="container">
+			<div class="row ">
+				<div class="col text-center">
+					<h1>El Origen</h1>
+					<p>"Un cocinero se convierte en artista cuando tiene cosas que
+						decir a través de sus platos, como un pintor en un cuadro".</p>
+					<p>-Joan Miró-</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row align-items-stretch">
+				<div class="carta col-md-4">
+					<div class="card h-100">
+						<img class="card-img-top"
+							src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/62/fd/a5/el-peine-de-los-vientos.jpg?w=700&h=500&s=1"
+							alt="Imagen 1">
+						<div class="card-body">
+							<p class="card-text">En nuestro restaurante ubicado en la
+								costa vasca, ofrecemos una experiencia culinaria única en la que
+								se fusionan los sabores tradicionales vascos con técnicas
+								modernas. Nuestro compromiso con ingredientes frescos y locales
+								se refleja en cada plato que servimos, y nuestro ambiente
+								acogedor y amigable hace que cada visita sea una experiencia
+								inolvidable.</p>
+						</div>
 					</div>
 				</div>
+				<div class="carta col-md-4">
+					<div class="card h-100">
+						<img class="card-img-top"
+							src="https://mxcity.mx/wp-content/uploads/2021/03/salon-bach.jpeg"
+							alt="Imagen 2">
+						<div class="card-body">
+							<p class="card-text">Nos enorgullecemos de nuestra larga
+								historia y tradición culinaria. Desde nuestro fundador, que
+								comenzó este negocio como una pequeña taberna hace décadas,
+								hasta nuestro equipo de chefs y personal actual, todos hemos
+								trabajado duro para mantener viva la esencia y la autenticidad
+								de la cocina vasca.</p>
+						</div>
+					</div>
+				</div>
+				<div class="carta col-md-4">
+					<div class="card h-100">
+						<img class="card-img-top"
+							src="https://www.saberysabor.com/files/uploads/images/Noticias/2022/02/Ramces-Gonzalez-Diego-Millan.jpg"
+							alt="Imagen 3">
+						<div class="card-body">
+							<p class="card-text">Sabemos que el personal es clave para
+								crear una experiencia gastronómica excepcional. Nuestro equipo
+								de chefs y camareros altamente capacitados están comprometidos
+								con ofrecer un servicio excepcional y una atención al cliente de
+								primera clase. Desde nuestra selección de vinos hasta nuestros
+								platos recomendados, cada miembro del personal está capacitado
+								para proporcionarte la mjor experiencia posible en nuestro
+								restaurante.</p>
 
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="mapa">
-							<h2>Mapa</h2>
-							<div class="d-flex justify-content-center">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1410.1572701887817!2d-1.991576532071527!3d43.31517957430266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51baab3c59e249%3A0x15584aada0b2ae25!2sLa%20Perla%20Bar%20Restaurante!5e0!3m2!1ses!2ses!4v1683395088640!5m2!1ses!2ses"
-									width="100%" height="450" style="border: 0;"></iframe>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+
+
+
 
 		<br> <br> <br> <br>
 	</header>

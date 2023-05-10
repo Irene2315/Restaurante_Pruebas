@@ -65,7 +65,7 @@ public class ModificarUsuario extends HttpServlet {
 				//enviamos los roles y cargamos la vista
 		request.setAttribute("roles", roles);
 				
-		request.getRequestDispatcher("Usuario/ModificarUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("ModificarUsuario.jsp").forward(request, response);
 	}
 			else {
 				response.sendRedirect("PaginaUsuario");

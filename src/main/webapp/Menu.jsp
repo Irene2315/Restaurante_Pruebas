@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,19 +16,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 <style>
 body {
 	background-color: #1C1C1C;
 	color: white;
-}
-
-.form-container {
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	background-color: #373737;
-	color: white;
-	margin-bottom: 50px;
 }
 
 .navbar {
@@ -49,15 +46,18 @@ body {
 .nav-link:hover {
 	color: black;
 }
+
+@media ( width < 500px) {
+	.iframe {
+		padding-bottom: 25%
+	}
+}
 </style>
-
-
-
 </head>
 <body>
-	<!-- Barra de navegaciÃ³n -->
+	<!-- Barra de navegación -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="PaginaCliente/PaginaInicialCliente.jsp"
+		<a class="navbar-brand" href="PaginaInicialCliente.jsp"
 			style="margin-left: 10px;">Herrero Martinez</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
@@ -69,152 +69,50 @@ body {
 			id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					href="PaginaCliente/SobreNosotros.jsp">Acerca de nosotros</a></li>
-				<li class="nav-item"><a class="nav-link" href="PaginaCliente/Menu.jsp">Menu</a>
+					href="SobreNosotros.jsp">Acerca de nosotros</a></li>
+				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="../PaginaReservaCliente">Reservas</a></li>
-				<li class="nav-item"><a class="nav-link" href="PaginaCliente/Eventos.jsp">Eventos
+					href="PaginaReservaCliente">Reservas</a></li>
+				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
-				<li class="nav-item"><a class="nav-link" href="PaginaCliente/Ubicacion.jsp">Ubicacion
+				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="../LoginEmpleado"
-					class="btn btn-dark" style=" color: white;">SESION
-						EMPLEADO</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
 	</nav>
+	
 
-	<section style="margin-top: 100px;">
+	<!-- Página de inicio -->
+	<header class="jumbotron jumbotron-fluid bg-black"
+		style="height: 80vh;">
+		<div class="container text-center">
+			<br> <br> <br>
+		</div>
 
-		<!-- Fila principal -->
-		<div class="row" style="width:100%;">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h1>Nuestros Menús</h1>
+					<p> Nuestro restaurante ofrece 4 tipos de menús: comidas,
+						cenas, bodas y bautizos. Cada uno de estos menús cuentan con una
+						calidad de producto impecable. Si usted sufre alguna
+						intolerancia o alergia, no dude en informarnos.</p>
 
-			<!-- Columna con imagen y texto -->
-			<div class="col-12 col-lg-6 text-center">
-				<img
-					src="https://www.gotokyo.org/es/see-and-do/drinking-and-dining/images/826_0774_1.jpg"
-					alt="Imagen de muestra" class="img-fluid">
-
-				<p style="color: white;">Para reservar una mesa en nuestro
-					restaurante, simplemente complete el formulario en linea o llamenos
-					directamente. Nuestro amable personal estara encantado de ayudarle
-					a encontrar la mesa perfecta para su ocasion especial o simplemente
-					para disfrutar de una cena inolvidable con amigos y familiares.</p>
+				</div>
 			</div>
-
-			<!-- Columna con formulario y buscador -->
-			<div class="col-12 col-lg-6">
-
-				<div class="form-container">
-					<div class="row" >
-
-
-						<div class="col-lg-6">
-							<h1 class="fw-bold">Realizar Reserva</h1>
-							
-
-							<form method="get" action="CargarUsuario">
-								<p class="fw-bold">
-									Buscar dni <input type="text" name="DNI" style="margin-left: 5px;"/><br> <br> 
-									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
-								</p>
-								
-							</form>
-							<c:if test="${error eq true}">
-    						<div class="alert alert-danger" role="alert">
-        					Has introducido la reserva incorrectamente!
-    						</div>
-							</c:if>
-							<form method="POST" action="InsertarReserva">
-
-								<p class="fw-bold" style="margin-left: 45px;">
-									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
-								</p>
-								<p class="fw-bold" style="margin-left: 10px;">
-									Nombre: <input type="text" name="Nombre"
-										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
-								</p>
-								
-								<p class="fw-bold" style="margin-left: 10px;">
-									Apellido: <input type="text" name="Apellido"
-										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
-								</p>
-								
-								<p class="fw-bold" style="margin-left: 10px;">
-									Telefono: <input type="text" name="Telefono"
-										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
-								</p>
-								
-								<p class="fw-bold" style="margin-left: 25px;">
-									Correo: <input type="text" name="Correo" 
-										value="${cliente.correo}" style="margin-left: 5px;"required  /> <br>
-								</p>
-								<br>
-								<p class="fw-bold" style="margin-left: 65px;">
-									Fecha: <input type="date" name="fecha" style="margin-left: 5px;" required /> <br>
-								</p>
-								<br><label class="fw-bold"  for="evento" style="margin-left: 60px;">Evento:</label>
-									<select name="evento" id="evento" required>
-  											<option value=""></option>
-  											<c:forEach items="${eventos}" var="evento">
-    										<option value="${evento.cEvento}">${evento.nombre}</option>
-  										</c:forEach>
-
-								
-								</select>  <br> <br><input type="submit" class="btn btn-secondary" value="Reservar"  style="margin-left: 150px;"/>
-
-
-							</form>
-							
-							
-							
-							
-						</div>
-
-
-						<div class="col-lg-6">
-							<h1 class="fw-bold">Ver Reservas</h1>
-
-							<form method="get" action="VerReservas">
-								<p class="fw-bold">
-									DNI: <input type="text" name="DNI"
-										value="${reserva.cliente.dni}" /> <input type="submit"
-										class="btn-primary" value="Buscar">
-								</p>
-							</form>
-
-							<table class="table"  style="color:white">
-
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">nReserva</th>
-										<th scope="col">Fecha</th>
-										<th scope="col">Evento</th>
-
-
-									</tr>
-								</thead>
-								<tbody>
-
-									<c:forEach items="${reservas}" var="reserva">
-										<tr>
-											<th scope="row"></th>
-											<td>${reserva.nReserva}</td>
-											<td>${reserva.fecha}</td>
-											<td>${reserva.evento.nombre}</td>
-
-
-
-										</tr>
-
-									</c:forEach>
-
-
-								</tbody>
-							</table>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div style="width: 50%;">
+						<div style="">
+							<iframe class="iframe" loading="lazy"
+								style="position: absolute; width: 50%; height: 50%; top: 50; left: 0; border: none; margin-top: 5px; margin-left: 25%; margin-bottom: 50%;"
+								src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFh8MgCDJo&#x2F;view?embed"
+								allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe>
 
 						</div>
 					</div>
@@ -223,8 +121,7 @@ body {
 			</div>
 
 		</div>
-
-	</section>
+	</header>
 	<!-- Footer -->
 	<footer class="text-center text-lg-start bg-white text-muted">
 		<!-- Section: Social media -->
@@ -326,7 +223,7 @@ body {
 		<!-- Copyright -->
 		<div class="text-center p-4"
 			style="background-color: rgba(0, 0, 0, 0.025);">
-			Â© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
+			© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
 		</div>
 		<!-- Copyright -->
 	</footer>

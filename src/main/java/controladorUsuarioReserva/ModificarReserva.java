@@ -66,7 +66,7 @@ public class ModificarReserva extends HttpServlet {
 				request.setAttribute("eventos", eventos);
 
 				request.setAttribute("reserva", reserva);
-				request.getRequestDispatcher("Reserva/ModificarReserva.jsp").forward(request, response);
+				request.getRequestDispatcher("ModificarReserva.jsp").forward(request, response);
 			}
 
 			else {

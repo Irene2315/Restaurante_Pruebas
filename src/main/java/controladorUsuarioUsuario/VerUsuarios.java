@@ -53,7 +53,7 @@ public class VerUsuarios extends HttpServlet {
 		//eviaremos los datos de los usuarios y del usuario que se ha logueado
 		request.setAttribute("usuarios", usuarios);
 		session.setAttribute("usuarioLogueado", usuarioLogueado);
-		request.getRequestDispatcher("Usuario/VistaUsuarios.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaUsuarios.jsp").forward(request, response);
 		}
 	}
 

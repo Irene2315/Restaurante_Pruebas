@@ -80,7 +80,7 @@ public class ModificarPlato extends HttpServlet {
 		request.setAttribute("productosPlato",  productosPlato);
 		request.setAttribute("productosNOplato", productosNOplato );
 		
-		request.getRequestDispatcher("Plato/VistaModificarPlato.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaModificarPlato.jsp").forward(request, response);
 		
 			}
 			else {
