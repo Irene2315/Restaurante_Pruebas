@@ -85,7 +85,7 @@ public class ModificarUsuario extends HttpServlet {
 		int cUsuario = Integer.parseInt(request.getParameter("cUsuario"));
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
-		String contrasena =request.getParameter("contraseña");
+		String contrasena =request.getParameter("contrasena");
 		String telefono = request.getParameter("telefono");
 		String correoTrabajo = request.getParameter("correoTrabajo");
 		
