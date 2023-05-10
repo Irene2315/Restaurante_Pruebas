@@ -35,6 +35,9 @@ public class VerReservas extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		boolean error = false;
+		
 		ModeloCliente clienteM = new ModeloCliente();
 		
 		ArrayList <Reserva> reservas = new ArrayList<Reserva>();
@@ -52,7 +55,7 @@ public class VerReservas extends HttpServlet {
 		
 		eventoM.cerrar();
 		
-		
+		request.setAttribute("error", error);
 		request.setAttribute("reservas", reservas);
 		request.setAttribute("eventos", eventos);
 		

@@ -91,16 +91,15 @@ body {
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
 					href="SobreNosotros.jsp">Acerca de nosotros</a></li>
-				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menú</a>
+				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="PaginaReservaCliente">Reservas</a>
-				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
-				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicación
+				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="nav-link">Log
-						in</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>

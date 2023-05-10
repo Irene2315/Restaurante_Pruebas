@@ -33,8 +33,9 @@ public class LoginEmpleado extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		boolean error = true;
 		//Cargar la vista de login
+		request.setAttribute("error", error);
 		request.getRequestDispatcher("VistaLoginEmpleado.jsp").forward(request, response);
 	}
 

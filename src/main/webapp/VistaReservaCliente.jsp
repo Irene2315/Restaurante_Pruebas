@@ -48,6 +48,8 @@ body {
 	color: white;
 }
 
+
+
 </style>
 </head>
 <body>
@@ -65,16 +67,15 @@ body {
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
 					href="SobreNosotros.jsp">Acerca de nosotros</a></li>
-				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menú</a>
+				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
-				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicación
+				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="nav-link">Log
-						in</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
@@ -91,9 +92,9 @@ body {
 					alt="Imagen de muestra" class="img-fluid">
 
 				<p style="color: white;">Para reservar una mesa en nuestro
-					restaurante, simplemente complete el formulario en línea o llámenos
-					directamente. Nuestro amable personal estará encantado de ayudarle
-					a encontrar la mesa perfecta para su ocasión especial o simplemente
+					restaurante, simplemente complete el formulario en linea o llamenos
+					directamente. Nuestro amable personal estara encantado de ayudarle
+					a encontrar la mesa perfecta para su ocasion especial o simplemente
 					para disfrutar de una cena inolvidable con amigos y familiares.</p>
 			</div>
 
@@ -106,54 +107,64 @@ body {
 
 						<div class="col-md-6">
 							<h1 class="fw-bold">Realizar Reserva</h1>
-
+							
 
 							<form method="get" action="CargarUsuario">
 								<p class="fw-bold">
-									Buscar dni <input type="text" name="DNI" /> <input
-										type="submit" class="btn-primary" value="Buscar">
+									Buscar dni <input type="text" name="DNI" style="margin-left: 5px;"/><br> <br> 
+									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
 								</p>
+								
 							</form>
-
+							<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido la reserva incorrectamente!
+    						</div>
+							</c:if>
 							<form method="POST" action="InsertarReserva">
 
-								<p class="fw-bold">
-									DNI: <input type="text" name="DNI2" value="${cliente.dni}" /><br>
+								<p class="fw-bold" style="margin-left: 45px;">
+									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
 								</p>
-								<p class="fw-bold">
+								<p class="fw-bold" style="margin-left: 10px;">
 									Nombre: <input type="text" name="Nombre"
-										value="${cliente.nombre}" /> <br>
+										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
 								</p>
-								<br>
-								<p class="fw-bold">
+								
+								<p class="fw-bold" style="margin-left: 10px;">
 									Apellido: <input type="text" name="Apellido"
-										value="${cliente.apellido}" /> <br>
+										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
 								</p>
-								<br>
-								<p class="fw-bold">
+								
+								<p class="fw-bold" style="margin-left: 10px;">
 									Telefono: <input type="text" name="Telefono"
-										value="${cliente.telefono}" /> <br>
+										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
+								</p>
+								
+								<p class="fw-bold" style="margin-left: 25px;">
+									Correo: <input type="text" name="Correo" 
+										value="${cliente.correo}" style="margin-left: 5px;"required  /> <br>
 								</p>
 								<br>
-								<p class="fw-bold">
-									Correo: <input type="text" name="Correo"
-										value="${cliente.correo}" /> <br>
+								<p class="fw-bold" style="margin-left: 65px;">
+									Fecha: <input type="date" name="fecha" style="margin-left: 5px;" required /> <br>
 								</p>
-								<br>
-								<p class="fw-bold">
-									Fecha: <input type="date" name="fecha" /> <br>
-								</p>
-								<br> Evento_Realizar:<select name="evento">
-									<option value="0"></option>
-									<c:forEach items="${eventos}" var="evento">
-										<option value="${evento.cEvento}">${evento.nombre}</option>
-									</c:forEach>
-								</select> <input type="submit" class="btn btn-secondary" value="Reservar" />
+								<br><label class="fw-bold"  for="evento" style="margin-left: 60px;">Evento:</label>
+									<select name="evento" id="evento" required>
+  											<option value=""></option>
+  											<c:forEach items="${eventos}" var="evento">
+    										<option value="${evento.cEvento}">${evento.nombre}</option>
+  										</c:forEach>
+
+								
+								</select>  <br> <br><input type="submit" class="btn btn-secondary" value="Reservar"  style="margin-left: 150px;"/>
 
 
 							</form>
-
-							<a href="VerUsuarios" class="btn btn-primary">Volver</a>
+							
+							
+							
+							
 						</div>
 
 
@@ -310,7 +321,7 @@ body {
 		<!-- Copyright -->
 		<div class="text-center p-4"
 			style="background-color: rgba(0, 0, 0, 0.025);">
-			© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
+			Â© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
 		</div>
 		<!-- Copyright -->
 	</footer>

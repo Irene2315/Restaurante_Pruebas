@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,92 +12,57 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
 
-<style type="text/css">
-.login-card {
-	width: 300px;
-	margin: 0 auto;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	background-color: #e8e8e8;
-	box-shadow: 2px 2px 10px #ccc;
-	margin-top: 10px;
-}
-
-.card-header {
-	text-align: center;
-	margin-bottom: 20px
-}
-
-.card-header .log {
-	margin: 0;
-	font-size: 24px;
-	color: black;
-}
-
-.form-group {
-	color: black;
-	margin-bottom: 15px;
-}
-
-label {
-	font-size: 18px;
-	margin-bottom: 5px;
-}
-
-input[type="text"], input[type="password"] {
-	width: 100%;
-	padding: 12px 20px;
-	font-size: 16px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	transition: 0.5s;
-}
-
-input[type="submit"] {
-	width: 100%;
-	background-color: #333;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-input[type="submit"]:hover {
-	background-color: #ccc;
-	color: black;
-}
-</style>
 </head>
-<body>
+<body style="
+  background-image: url('https://enlacocina.b-cdn.net/wp-content/uploads/2018/02/maitre.jpg'); 
+  background-repeat: no-repeat; background-size: cover;">
 
-	<div class="login-card">
-		<div class="card-header">
-			<div class="log">Iniciar Sesion</div>
+  <div class="container py-5 h-80" >
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center " style="height:650px;">
 
-		</div>
-		<form method="POST">
-			<div class="form-group">
-				<label for="username">CºUsuario:</label> <input required=""
-					name="cUsuario" id="username" type="text">
-			</div>
-			<div class="form-group">
-				<label for="password">Contraseña:</label> <input required=""
-					name="contrasena" id="password" type="password">
-			</div>
-			<div class="form-group">
-				<input type="submit" value="Enviar" class="btn btn-primary">
-			</div>
-			<div class="form-group">
-				<a href="PaginaInicialCliente.jsp" class="btn btn-secondary"
-					onclick="history.back()">Volver</a>
-			</div>
-		</form>
-	</div>
+            <div class="mb-md-5 mt-md-4 pb-5">
+            
+			<form method="POST">
+              <h2 class="fw-bold mb-2 text-uppercase">INICIAR SESION</h2>
+             
+              <p class="text-white-50 mb-5">Introduzca el codigo de usuario y su contraseña</p>
+              	<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el usuario incorrectamente!
+    						</div>
+				</c:if>
+				
+              <div class="form-outline form-white mb-4">
+                CºUsuario<input name="cUsuario" id="username" type="text" class="form-control form-control-lg" required />
+               
+                
+              </div>
 
+              <div class="form-outline form-white mb-4">
+                Contraseña<input type="password" id="password" name="contrasena" class="form-control form-control-lg" />
+               
+              </div>
+				<br>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">Acceder</button>
+              <br>
+              <br>
+             <a href="VerProductos" class="btn btn-outline-light btn-lg px-5" >Volver  </a>
+              
+
+              </form>
+            </div>
+			
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
 
 </body>
 </html>
+
+			
