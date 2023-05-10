@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -33,6 +33,11 @@
 		<div class="form-container">
 			<form method="POST" action="ModificarUsuario">
 				<h1 class="fw-bold">Modificar Usuario</h1>
+				<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el usuario incorrectamente!
+    						</div>
+				</c:if>
 				<p class="fw-bold">
 					cUsuario: ${usuario.cUsuario} <input type="hidden" name="cUsuario"
 						value="${usuario.cUsuario}" /> <br>

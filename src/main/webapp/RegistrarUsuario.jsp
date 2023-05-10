@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,27 +34,31 @@
 	<div class="container">
 		<div class="form-container">
 			<h1 class="fw-bold">Registrar Usuario</h1>
-
+			<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el usuario incorrectamente!
+    						</div>
+				</c:if>
 			<form method="POST" action="InsertarUsuario">
 
 				<p>
-					Nombre: <input type="text" name="nombre" /> <br>
+					Nombre: <input type="text" name="nombre" required /> <br>
 				</p>
 				<br>
 				<p>
-					Apellido: <input type="text" name="apellido" /> <br>
+					Apellido: <input type="text" name="apellido" required /> <br>
 				</p>
 				<br>
 				<p>
-					Contraseña: <input type="text" name="contrasena" /> <br>
+					Contraseña: <input type="text" name="contrasena" required/> <br>
 				</p>
 				<br>
 				<p>
-					Telefono: <input type="text" name="telefono" /> <br>
+					Telefono: <input type="text" name="telefono" required/> <br>
 				</p>
 				<br>
 				<p>
-					correoTrabajo: <input type="text" name="correoTrabajo" /> <br>
+					correoTrabajo: <input type="text" name="correoTrabajo" required /> <br>
 				</p>
 				<br> Roles:<select name="rol">
 					<option value="0"></option>

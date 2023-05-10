@@ -115,8 +115,8 @@ body {
 							
 
 							<form method="get" action="CargarUsuario">
-								<p class="fw-bold">
-									Buscar dni <input type="text" name="DNI" style="margin-left: 5px;"/><br> <br> 
+								<p class="fw-bold" >
+									Buscar dni <input type="text" name="DNI" style="margin-left: 80px;" /><br> <br> 
 									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
 								</p>
 								
@@ -128,27 +128,27 @@ body {
 							</c:if>
 							<form method="POST" action="InsertarReserva">
 
-								<p class="fw-bold" style="margin-left: 45px;">
+								<p class="fw-bold" style="margin-left: 30px;">
 									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
 								</p>
-								<p class="fw-bold" style="margin-left: 10px;">
+								<p class="fw-bold" style="margin-left: 1px;">
 									Nombre: <input type="text" name="Nombre"
 										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
 								</p>
 								
-								<p class="fw-bold" style="margin-left: 10px;">
+								<p class="fw-bold" style="margin-left: 1px;">
 									Apellido: <input type="text" name="Apellido"
 										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
 								</p>
 								
-								<p class="fw-bold" style="margin-left: 10px;">
+								<p class="fw-bold" style="margin-left: 1px;">
 									Telefono: <input type="text" name="Telefono"
 										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
 								</p>
 								
-								<p class="fw-bold" style="margin-left: 25px;">
+								<p class="fw-bold" style="margin-left: 1px;">
 									Correo: <input type="text" name="Correo" 
-										value="${cliente.correo}" style="margin-left: 5px;"required  /> <br>
+										value="${cliente.correo}" style="margin-left: 20px;"required  /> <br>
 								</p>
 								<br>
 								<p class="fw-bold" style="margin-left: 65px;">
