@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,15 +23,6 @@ body {
 	color: white;
 }
 
-.form-container {
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	background-color: #373737;
-	color: white;
-	margin-bottom: 50px;
-}
-
 .navbar {
 	overflow: hidden;
 	position: fixed; /* Set the navbar to fixed position */
@@ -49,13 +38,45 @@ body {
 .nav-link:hover {
 	color: black;
 }
+
+.navbar-toggler-icon {
+	color: red;
+	z-index: 4;
+}
+
+.card {
+	position: relative;
+	overflow: hidden;
+	margin-top: 20px;
+}
+
+.card-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card:hover .card-overlay {
+	opacity: 1;
+}
+
+.card-text {
+	text-align: center;
+	font-size: 1rem;
+}
 </style>
-
-
-
 </head>
 <body>
-	<!-- Barra de navegaciÃ³n -->
+	<!-- Barra de navegación -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="PaginaInicialCliente.jsp"
 			style="margin-left: 10px;">Herrero Martinez</a>
@@ -73,158 +94,127 @@ body {
 				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="PaginaReservaCliente">Reservas</a></li>
+					href="../PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado"
-					class="btn btn-dark" style="margin-left: 380px; color: white;">SESION
-						EMPLEADO</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
 	</nav>
 
-	<section style="margin-top: 100px;">
 
-		<!-- Fila principal -->
-		<div class="row" style="width:100%;">
-
-			<!-- Columna con imagen y texto -->
-			<div class="col-12 col-lg-6 text-center">
-				<img
-					src="https://www.gotokyo.org/es/see-and-do/drinking-and-dining/images/826_0774_1.jpg"
-					alt="Imagen de muestra" class="img-fluid">
-
-				<p style="color: white;">Para reservar una mesa en nuestro
-					restaurante, simplemente complete el formulario en linea o llamenos
-					directamente. Nuestro amable personal estara encantado de ayudarle
-					a encontrar la mesa perfecta para su ocasion especial o simplemente
-					para disfrutar de una cena inolvidable con amigos y familiares.</p>
+	<!-- Página de inicio -->
+	<header class="jumbotron jumbotron-fluid bg-black">
+		<br> <br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1>Eventos Especiales</h1>
+					<p>En nuestro restaurante no solo nos enfocamos en brindar
+						deliciosas comidas y cenas, sino que también estamos preparados
+						para hacer de tus eventos especiales una experiencia inolvidable.
+						Desde bodas y bautizos hasta fiestas de cumpleaños y reuniones
+						empresariales, estamos equipados para crear un ambiente elegante y
+						acogedor que dejará una impresión duradera en tus invitados.
+						Nuestro equipo de profesionales está dispuesto a ayudarte a
+						planificar y coordinar todos los detalles de tu evento para que
+						puedas disfrutar de una celebración sin preocupaciones. Ya sea que
+						busques una cena íntima o una gran fiesta, nuestro restaurante es
+						el lugar perfecto para celebrar tus momentos más importantes.</p>
+				</div>
 			</div>
-
-			<!-- Columna con formulario y buscador -->
-			<div class="col-12 col-lg-6">
-
-				<div class="form-container">
-					<div class="row" >
-
-
-						<div class="col-lg-6">
-							<h1 class="fw-bold">Realizar Reserva</h1>
-							
-
-							<form method="get" action="CargarUsuario">
-								<p class="fw-bold">
-									Buscar dni <input type="text" name="DNI" style="margin-left: 5px;"/><br> <br> 
-									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
-								</p>
-								
-							</form>
-							<c:if test="${error eq true}">
-    						<div class="alert alert-danger" role="alert">
-        					Has introducido la reserva incorrectamente!
-    						</div>
-							</c:if>
-							<form method="POST" action="InsertarReserva">
-
-								<p class="fw-bold" style="margin-left: 45px;">
-									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
-								</p>
-								<p class="fw-bold" style="margin-left: 10px;">
-									Nombre: <input type="text" name="Nombre"
-										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
-								</p>
-								
-								<p class="fw-bold" style="margin-left: 10px;">
-									Apellido: <input type="text" name="Apellido"
-										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
-								</p>
-								
-								<p class="fw-bold" style="margin-left: 10px;">
-									Telefono: <input type="text" name="Telefono"
-										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
-								</p>
-								
-								<p class="fw-bold" style="margin-left: 25px;">
-									Correo: <input type="text" name="Correo" 
-										value="${cliente.correo}" style="margin-left: 5px;"required  /> <br>
-								</p>
-								<br>
-								<p class="fw-bold" style="margin-left: 65px;">
-									Fecha: <input type="date" name="fecha" style="margin-left: 5px;" required /> <br>
-								</p>
-								<br><label class="fw-bold"  for="evento" style="margin-left: 60px;">Evento:</label>
-									<select name="evento" id="evento" required>
-  											<option value=""></option>
-  											<c:forEach items="${eventos}" var="evento">
-    										<option value="${evento.cEvento}">${evento.nombre}</option>
-  										</c:forEach>
-
-								
-								</select>  <br> <br><input type="submit" class="btn btn-secondary" value="Reservar"  style="margin-left: 150px;"/>
-
-
-							</form>
-							
-							
-							
-							
-						</div>
-
-
-						<div class="col-lg-6">
-							<h1 class="fw-bold">Ver Reservas</h1>
-
-							<form method="get" action="VerReservas">
-								<p class="fw-bold">
-									DNI: <input type="text" name="DNI"
-										value="${reserva.cliente.dni}" /> <input type="submit"
-										class="btn-primary" value="Buscar">
-								</p>
-							</form>
-
-							<table class="table"  style="color:white">
-
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">nReserva</th>
-										<th scope="col">Fecha</th>
-										<th scope="col">Evento</th>
-
-
-									</tr>
-								</thead>
-								<tbody>
-
-									<c:forEach items="${reservas}" var="reserva">
-										<tr>
-											<th scope="row"></th>
-											<td>${reserva.nReserva}</td>
-											<td>${reserva.fecha}</td>
-											<td>${reserva.evento.nombre}</td>
-
-
-
-										</tr>
-
-									</c:forEach>
-
-
-								</tbody>
-							</table>
+		
+		
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<img class="card-img-top"
+							src="https://s1.1zoom.me/b5050/145/350089-admin_1920x1080.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>BODAS</h1>
+									<p class="card-text text-center">En nuestro restaurante,
+										ofrecemos una experiencia única y memorable para su boda.
+										Contamos con un equipo de expertos en eventos que se encargará
+										de cada detalle para asegurarnos de que su día especial sea
+										perfecto. Ofrecemos opciones de menú personalizadas para
+										satisfacer los gustos y necesidades de todos sus invitados.</p>
+								</div>
+							</div>
 
 						</div>
 					</div>
 				</div>
-
+				<div class="col-md-6">
+					<div class="card">
+						<img class="card-img-top"
+							src="https://grupo1844.com/wp-content/uploads/2022/09/slider-transporte-cenas-empresa.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>CENA EMPRESA</h1>
+									<p class="card-text text-center">En nuestro restaurante,
+										ofrecemos la opción perfecta para su evento de fin de año.
+										Nuestras cenas de empresa son la forma ideal para celebrar el
+										éxito de su empresa y disfrutar de una deliciosa comida en un
+										ambiente relajado y acogedor.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<img class="card-img-top"
+							src="https://migueldomecq.com/wp-content/uploads/2022/03/Que-incluye-una-cata-de-vino-en-Jerez.-En-que-consiste.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>CATA VINOS</h1>
+									<p class="card-text text-center">¿Eres un amante del vino y
+										quieres descubrir nuevos sabores y aromas? En nuestro
+										restaurante ofrecemos experiencias de cata de vinos para que
+										puedas disfrutar de una selección de los mejores vinos de la
+										región.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<img class="card-img-top"
+								src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2022/03/primera-comunion-2661919.jpg"
+								alt="Imagen de ejemplo">
+							<div class="card-overlay">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<h1>COMUNION</h1>
+										<p class="card-text text-center">Celebre la Primera
+											Comunión de su hijo o hija en nuestro restaurante y disfrute
+											de una experiencia inolvidable. Nos aseguraremos de que el
+											día de su hijo o hija sea especial y memorable al ofrecer
+											opciones de menú adaptadas a las necesidades de los más
+											pequeños y a sus invitados adultos.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+		
 
-		</div>
 
-	</section>
+		<br> <br> <br> <br>
+	</header>
 	<!-- Footer -->
 	<footer class="text-center text-lg-start bg-white text-muted">
 		<!-- Section: Social media -->
@@ -326,7 +316,7 @@ body {
 		<!-- Copyright -->
 		<div class="text-center p-4"
 			style="background-color: rgba(0, 0, 0, 0.025);">
-			Â© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
+			© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
 		</div>
 		<!-- Copyright -->
 	</footer>

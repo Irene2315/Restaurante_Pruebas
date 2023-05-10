@@ -36,7 +36,7 @@ public class LoginEmpleado extends HttpServlet {
 		boolean error = true;
 		//Cargar la vista de login
 		request.setAttribute("error", error);
-		request.getRequestDispatcher("VistaLoginEmpleado.jsp").forward(request, response);
+		request.getRequestDispatcher("Login/VistaLoginEmpleado.jsp").forward(request, response);
 	}
 
 	/**

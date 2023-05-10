@@ -51,7 +51,7 @@ public class VerEventos extends HttpServlet {
 			request.setAttribute("eventos", eventos);
 			session.setAttribute("usuarioLogueado", usuarioLogueado);
 			
-			request.getRequestDispatcher("VistaEventos.jsp").forward(request, response);
+			request.getRequestDispatcher("Evento/VistaEventos.jsp").forward(request, response);
 			
 		}
 		

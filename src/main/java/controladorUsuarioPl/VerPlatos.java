@@ -50,7 +50,7 @@ public class VerPlatos extends HttpServlet {
 		
 		request.setAttribute("platos", platos);
 		
-		request.getRequestDispatcher("VistaPlatos.jsp").forward(request, response);
+		request.getRequestDispatcher("Plato/VistaPlatos.jsp").forward(request, response);
 		}
 	}
 

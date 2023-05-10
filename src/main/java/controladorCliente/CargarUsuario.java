@@ -52,7 +52,7 @@ public class CargarUsuario extends HttpServlet {
 		request.setAttribute("cliente", cliente);
 		request.setAttribute("eventos", eventos);
 		
-		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("PaginaCliente/VistaReservaCliente.jsp").forward(request, response);
 		
 	}
 	/**

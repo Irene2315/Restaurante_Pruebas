@@ -55,7 +55,7 @@ public class RegistrarPlato extends HttpServlet {
 
 		request.setAttribute("productos", productos);
 
-		request.getRequestDispatcher("VistaRegistrarPlato.jsp").forward(request, response);
+		request.getRequestDispatcher("Plato/VistaRegistrarPlato.jsp").forward(request, response);
 	}
 			else {
 				response.sendRedirect("PaginaPlato");

@@ -16,26 +16,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 <style>
 body {
 	background-color: #1C1C1C;
 	color: white;
-}
-
-.carousel-control-prev-icon {
-	padding: 5px;
-	background-color: gray;
-	box-shadow: 0px 0px 10px black;
-	color: black !important;
-	background-color: gray;
-}
-
-.carousel-control-next-icon {
-	padding: 5px;
-	background-color: gray;
-	box-shadow: 0px 0px 10px black;
-	color: black !important;
-	background-color: gray;
 }
 
 .navbar {
@@ -54,8 +47,10 @@ body {
 	color: black;
 }
 
-.ubicacion {
-	margin-top: 70px;
+@media ( width < 500px) {
+	.iframe {
+		padding-bottom: 25%
+	}
 }
 </style>
 </head>
@@ -78,7 +73,7 @@ body {
 				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="PaginaReservaCliente">Reservas</a></li>
+					href="../PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
@@ -89,60 +84,42 @@ body {
 		</div>
 	</nav>
 
-
 	<!-- Página de inicio -->
-	<header class="jumbotron jumbotron-fluid bg-black">
-		<div class="ubicacion">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<h2>Ubicación</h2>
-						<p>Nuestro restaurante está ubicado en la hermosa concha,
-							justo al lado de la playa. Esta ubicación privilegiada nos
-							permite ofrecer a nuestros clientes una experiencia culinaria
-							inolvidable en un ambiente único y exclusivo.</p>
+	<header class="jumbotron jumbotron-fluid bg-black"
+		style="height: 80vh;">
+		<div class="container text-center">
+			<br> <br> <br>
+		</div>
 
-						<h2>Cómo llegar</h2>
-						<p>Puede llegar al restaurante en coche o en transporte
-							público. Si viene en coche, puede utilizar la siguiente dirección
-							para su GPS: Kontxa Pasealekua, s/n Paseo de La Concha, s/n
-							Edificio La Perla, Kontxa Pasealekua, 16, 20007 Donostia,
-							Gipuzkoa. También puede llegar en autobús, con la parada más
-							cercana a solo unos minutos a pie del restaurante.</p>
-					</div>
-					<div class="col-md-4">
-						<h2>Horarios</h2>
-						<p>
-							<strong>Lunes a jueves:</strong> de 12:00 pm a 3:00 pm y de 7:00
-							pm a 11:00 pm
-						</p>
-						<p>
-							<strong>Viernes y sábados:</strong> de 12:00 pm a 3:00 pm y de
-							7:00 pm a 12:00 am
-						</p>
-						<p>
-							<strong>Domingos:</strong> de 12:00 pm a 3:00 pm y de 7:00 pm a
-							11:00 pm
-						</p>
-					</div>
-				</div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h1>Nuestros Menús</h1>
+					<p> Nuestro restaurante ofrece 4 tipos de menús: comidas,
+						cenas, bodas y bautizos. Cada uno de estos menús cuentan con una
+						calidad de producto impecable. Si usted sufre alguna
+						intolerancia o alergia, no dude en informarnos.</p>
 
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="mapa">
-							<h2>Mapa</h2>
-							<div class="d-flex justify-content-center">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1410.1572701887817!2d-1.991576532071527!3d43.31517957430266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51baab3c59e249%3A0x15584aada0b2ae25!2sLa%20Perla%20Bar%20Restaurante!5e0!3m2!1ses!2ses!4v1683395088640!5m2!1ses!2ses"
-									width="100%" height="450" style="border: 0;"></iframe>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div style="width: 50%;">
+						<div style="">
+							<iframe class="iframe" loading="lazy"
+								style="position: absolute; width: 50%; height: 50%; top: 50; left: 0; border: none; margin-top: 5px; margin-left: 25%; margin-bottom: 50%;"
+								src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFh8MgCDJo&#x2F;view?embed"
+								allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe>
 
-		<br> <br> <br> <br>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
 	</header>
 	<!-- Footer -->
 	<footer class="text-center text-lg-start bg-white text-muted">

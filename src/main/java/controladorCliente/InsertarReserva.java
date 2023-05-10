@@ -127,7 +127,7 @@ public class InsertarReserva extends HttpServlet {
 
 		request.setAttribute("error", error);
 		request.setAttribute("eventos", eventos);
-		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("PaginaCliente/VistaReservaCliente.jsp").forward(request, response);
 
 	}
 
