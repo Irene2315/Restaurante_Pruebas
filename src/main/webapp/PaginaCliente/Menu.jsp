@@ -78,7 +78,7 @@ body {
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
+				<li class="nav-item"><a href="../LoginEmpleado" class="btn btn-dark" style="color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
