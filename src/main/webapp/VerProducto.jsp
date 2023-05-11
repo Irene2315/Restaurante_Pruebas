@@ -16,7 +16,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 10px;
+	margin-top: 10%;
 	color: black;
 }
 

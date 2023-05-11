@@ -70,7 +70,7 @@ body {
 				</p>
 				<br>
 				<p class="fw-bold">
-					CorreoTrabajo: <input type="text" name="correoTrabajo"
+					CorreoTrabajo: <input type="email" name="correoTrabajo"
 						value="${usuario.correoTrabajo}" required  /> <br>
 				</p>
 				<br>
