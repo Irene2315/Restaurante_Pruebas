@@ -116,7 +116,7 @@ body {
 
 							<form method="get" action="CargarUsuario">
 								<p class="fw-bold" >
-									Buscar dni <input type="text" name="DNI" style="margin-left: 80px;" /><br> <br> 
+									Buscar dni <input type="text" name="DNI" style="margin-left: 10x;" /><br> <br> 
 									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
 								</p>
 								
@@ -128,8 +128,8 @@ body {
 							</c:if>
 							<form method="POST" action="InsertarReserva">
 
-								<p class="fw-bold" style="margin-left: 30px;">
-									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
+								<p class="fw-bold" style="margin-left: 12px;">
+									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left:25px;"required ><br>
 								</p>
 								<p class="fw-bold" style="margin-left: 1px;">
 									Nombre: <input type="text" name="nombre"
