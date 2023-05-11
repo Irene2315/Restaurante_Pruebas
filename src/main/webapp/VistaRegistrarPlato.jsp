@@ -57,7 +57,11 @@
 
 					<div class="col-6">
 						<h1 class="fw-bold">PRODUCTOS</h1>
-
+						<c:if test="${productosLleno eq false}">
+    						<div class="alert alert-danger" role="alert">
+        					Debes selecionar al menos un producto!
+    						</div>
+	 					 </c:if>
 						<table class="table">
 
 							<thead>

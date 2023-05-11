@@ -40,6 +40,7 @@ public class RegistrarPlato extends HttpServlet {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
 		boolean error =false;
+		boolean productosLleno = true;
 		
 
 		if (usuarioLogueado == null) {// no logeado
@@ -57,6 +58,7 @@ public class RegistrarPlato extends HttpServlet {
 
 		request.setAttribute("productos", productos);
 		request.setAttribute("error", error);
+		request.setAttribute("productosLleno", productosLleno );
 		request.getRequestDispatcher("VistaRegistrarPlato.jsp").forward(request, response);
 	}
 			else {
@@ -78,7 +80,7 @@ public class RegistrarPlato extends HttpServlet {
 		ArrayList<Producto> todosProductos = modeloPr.getProductos();
 		ArrayList<Producto> productosPlato = new ArrayList<Producto>();
 		boolean error =false;
-		
+		boolean productosLleno =false;
 
 		/*compara entre todos los productos cuales están selecionados
 		 los selecionados los añade al plato*/
@@ -86,17 +88,18 @@ public class RegistrarPlato extends HttpServlet {
 			try {
 				if (!request.getParameter(producto.getcProducto()+"").equals(null)) {
 					productosPlato.add(producto);
+					productosLleno=true;
 				}
 			} catch (Exception e) {
 			}
 		}
 		modeloPr.cerrar();
 //		ArrayList <Producto> productos =request.getParameter("producto");
-		if (true==esDouble(precio))
+		if (true==esDouble(precio) )
 			{
 					error=true;
 			}	
-		if(error==false) {
+		if(error==false && productosLleno ==true) {
 		Plato plato = new Plato();
 		plato.setNombre(nombre);
 		plato.setPrecio(Double.parseDouble(precio));
@@ -123,6 +126,7 @@ public class RegistrarPlato extends HttpServlet {
 
 			request.setAttribute("productos", productos);
 			request.setAttribute("error", error);
+			request.setAttribute("productosLleno", productosLleno );
 			request.getRequestDispatcher("VistaRegistrarPlato.jsp").forward(request, response);
 		}
 		
