@@ -64,7 +64,7 @@ body {
 				</p>
 				<br>
 				<p>
-					correoTrabajo: <input type="text" name="correoTrabajo" required /> <br>
+					correoTrabajo: <input type="email" name="correoTrabajo" required /> <br>
 				</p>
 				<br> Roles:<select name="rol">
 					<option value="0"></option>
