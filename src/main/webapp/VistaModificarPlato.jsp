@@ -35,7 +35,7 @@
 }
 
 body {
-	background-image: url('https://wallpapercave.com/wp/wp8645275.jpg');
+	background-image: url('https://foodandtravel.mx/wp-content/uploads/2023/04/Comida-popular-Por.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;

@@ -26,7 +26,7 @@
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 body {
-	background-image: url('https://wallpapercave.com/wp/wp8645275.jpg');
+	background-image: url('https://foodandtravel.mx/wp-content/uploads/2023/04/Comida-popular-Por.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -56,7 +56,7 @@ body {
     						</div>
 	 					 </c:if>
 						<p>
-						Hola, ${sessionScope.usuarioLogueado.nombre}
+						
 							Nombre: <input type="text" name="nombre" required/> <br>
 						</p>
 						<br>
