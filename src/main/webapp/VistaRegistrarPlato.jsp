@@ -38,13 +38,17 @@
 				<div class="row 2">
 					<div class="col-6">
 						<h1 class="fw-bold">Resgistrar Plato</h1>
-
+						 <c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el plato incorrectamente!
+    						</div>
+	 					 </c:if>
 						<p>
-							Nombre: <input type="text" name="nombre" /> <br>
+							Nombre: <input type="text" name="nombre" required/> <br>
 						</p>
 						<br>
 						<p>
-							Precio: <input type="text" name="precio" /> <br>
+							Precio: <input type="text" name="precio" required/> <br>
 						</p>
 						<input type="submit" class="btn btn-secondary" value="Guardar" />
 						<a href="PaginaPlato" class="btn btn-dark">Volver </a>

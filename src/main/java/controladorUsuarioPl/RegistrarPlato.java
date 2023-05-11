@@ -39,6 +39,8 @@ public class RegistrarPlato extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+		boolean error =false;
+		
 
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("PaginaReservaCliente");
@@ -54,7 +56,7 @@ public class RegistrarPlato extends HttpServlet {
 		usuarioMPR.cerrar();
 
 		request.setAttribute("productos", productos);
-
+		request.setAttribute("error", error);
 		request.getRequestDispatcher("VistaRegistrarPlato.jsp").forward(request, response);
 	}
 			else {
@@ -70,12 +72,13 @@ public class RegistrarPlato extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");
-		double precio = Double.parseDouble(request.getParameter("precio"));
+		String precio = request.getParameter("precio");
 		ModeloUsuarioPr modeloPr = new ModeloUsuarioPr();
 		modeloPr.conectar();
 		ArrayList<Producto> todosProductos = modeloPr.getProductos();
 		ArrayList<Producto> productosPlato = new ArrayList<Producto>();
-		Plato plato = new Plato();
+		boolean error =false;
+		
 
 		/*compara entre todos los productos cuales están selecionados
 		 los selecionados los añade al plato*/
@@ -89,9 +92,14 @@ public class RegistrarPlato extends HttpServlet {
 		}
 		modeloPr.cerrar();
 //		ArrayList <Producto> productos =request.getParameter("producto");
-
+		if (true==esDouble(precio))
+			{
+					error=true;
+			}	
+		if(error==false) {
+		Plato plato = new Plato();
 		plato.setNombre(nombre);
-		plato.setPrecio(precio);
+		plato.setPrecio(Double.parseDouble(precio));
 		plato.setProductos(productosPlato);
 		
 		ModeloUsuarioPl modeloPl = new ModeloUsuarioPl();
@@ -102,10 +110,33 @@ public class RegistrarPlato extends HttpServlet {
 		modeloPl.AnadirProductosPlato(plato);
 		
 		modeloPl.cerrar();
-		
-		
 		response.sendRedirect("VerPlatos");
+		}
 		
+		else {
+			ModeloUsuarioPr usuarioMPR = new ModeloUsuarioPr();
+			usuarioMPR.conectar();
+
+			ArrayList<Producto> productos = usuarioMPR.getProductos();
+
+			usuarioMPR.cerrar();
+
+			request.setAttribute("productos", productos);
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("VistaRegistrarPlato.jsp").forward(request, response);
+		}
+		
+		
+		
+	}
+	
+	public static boolean esDouble(String stringDouble) {
+	    try {
+	        double d = Double.parseDouble(stringDouble);
+	    } catch (NumberFormatException nfe) {
+	        return true; //Error no es numerico
+	    }
+	    return false; //Es numerico
 	}
 
 }

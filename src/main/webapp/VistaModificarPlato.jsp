@@ -36,7 +36,11 @@
 					<div class="col-6">
 
 						<h1 class="fw-bold">Modificar Plato</h1>
-
+						 <c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el plato incorrectamente!
+    						</div>
+	 					 </c:if>
 
 						<p class="fw-bold">
 							Id: ${plato.cPlato} <input type="hidden" name="cPlato"
@@ -44,12 +48,12 @@
 						</p>
 
 						<p class="fw-bold">
-							Nombre: <input type="text" name="nombre" value="${plato.nombre}" />
+							Nombre: <input type="text" name="nombre" value="${plato.nombre}"  required/>
 							<br>
 						</p>
 						<br>
 						<p class="fw-bold">
-							Precio: <input type="text" name="precio" value="${plato.precio }" />
+							Precio: <input type="text" name="precio" value="${plato.precio }" required />
 							<br>
 						</p>
 						<br> <input type="submit" class="btn btn-secondary"
