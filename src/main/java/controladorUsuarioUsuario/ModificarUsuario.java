@@ -39,13 +39,13 @@ public class ModificarUsuario extends HttpServlet {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
 		boolean error = false;
-
+		int id = Integer.parseInt(request.getParameter("cUsuario"));
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("PaginaReservaCliente");
 		} else {
 			//solo el gerente puede acceder a esta funcionalidad
-			if (usuarioLogueado.getRol().getId()==(1)) {
-		int id = Integer.parseInt(request.getParameter("cUsuario"));
+			if (usuarioLogueado.getRol().getId()==(1) || (usuarioLogueado.getcUsuario() == id)) {
+		
 		
 		ModeloUsuario usuarioM = new ModeloUsuario();
 		Usuario usuario = new Usuario();
