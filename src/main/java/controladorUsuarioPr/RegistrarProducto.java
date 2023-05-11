@@ -33,13 +33,17 @@ public class RegistrarProducto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
-
+		boolean error =false;
+		
+		
 		if (usuarioLogueado == null) {// no logeado
+			
 			response.sendRedirect("PaginaReservaCliente");
 		} else {
 			
 			if (usuarioLogueado.getRol().getId()==(1)) {
-		request.getRequestDispatcher("Producto/VistaRegistrarProducto.jsp").forward(request, response);
+		request.setAttribute("error", error);
+		request.getRequestDispatcher("VistaRegistrarProducto.jsp").forward(request, response);
 			}
 			else {
 				response.sendRedirect("PaginaProductos");
@@ -50,17 +54,26 @@ public class RegistrarProducto extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String nombre =request.getParameter("nombre");
-		double calorias = Double.parseDouble(request.getParameter("calorias"));
-		double proteinas = Double.parseDouble(request.getParameter("proteinas"));
-		int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-		double precio = Double.parseDouble(request.getParameter("precio"));
+		String calorias = request.getParameter("calorias");
+		String proteinas = request.getParameter("proteinas");
+		String cantidad = request.getParameter("cantidad");
+		String precio = request.getParameter("precio");
+		boolean error =false;
 		
+		if (true==esDouble(calorias) || true==esDouble(proteinas) ||
+				true==esInt(cantidad) || true==esDouble(precio))
+			{
+					error=true;
+			}	
+		
+		
+		if(error==false) {
 		Producto producto = new Producto ();
 		producto.setNombre(nombre);
-		producto.setCalorias(calorias);
-		producto.setProteinas(proteinas);
-		producto.setCantidad(cantidad);
-		producto.setPrecio(precio);
+		producto.setCalorias(Double.parseDouble(calorias));
+		producto.setProteinas(Double.parseDouble(proteinas));
+		producto.setCantidad(Integer.parseInt(cantidad));
+		producto.setPrecio(Double.parseDouble(precio));
 		
 		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		usuarioM.conectar();
@@ -70,7 +83,31 @@ public class RegistrarProducto extends HttpServlet {
 		usuarioM.cerrar();
 		
 		response.sendRedirect("VerProductos");
+		}
+		
+		else {
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("VistaRegistrarProducto.jsp").forward(request, response);
+		}
+		
+	}
 	
+	public static boolean esDouble(String stringDouble) {
+	    try {
+	        double d = Double.parseDouble(stringDouble);
+	    } catch (NumberFormatException nfe) {
+	        return true; //Error no es numerico
+	    }
+	    return false; //Es numerico
+	}
+	
+	public static boolean esInt(String stringInt) {
+	    try {
+	        int d =Integer.parseInt(stringInt) ;
+	    } catch (NumberFormatException nfe) {
+	        return true; //Error no es numerico
+	    }
+	    return false; //Es numerico
 	}
 
 }

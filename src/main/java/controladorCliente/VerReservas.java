@@ -59,7 +59,7 @@ public class VerReservas extends HttpServlet {
 		request.setAttribute("reservas", reservas);
 		request.setAttribute("eventos", eventos);
 		
-		request.getRequestDispatcher("PaginaCliente/VistaReservaCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
 		
 	}
 

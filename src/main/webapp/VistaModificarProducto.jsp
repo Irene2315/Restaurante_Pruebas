@@ -25,13 +25,29 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+body {
+	background-image: url('https://wallpapercave.com/wp/wp8645275.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
+}
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="form-container">
 			<h1 class="fw-bold">Modificar Producto</h1>
-
+			<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido la reserva incorrectamente!
+    						</div>
+	  		</c:if>
 			<form method="POST" action="ModificarProducto">
 				<p class="fw-bold">
 					Id: ${producto.cProducto } <input type="hidden" name="cProducto"
@@ -39,26 +55,26 @@
 				</p>
 
 				<p class="fw-bold">
-					Nombre: <input type="text" name="nombre" value="${producto.nombre}" />
+					Nombre: <input type="text" name="nombre" value="${producto.nombre}" required />
 					<br>
 				</p>
 				<br>
 				<p class="fw-bold">
 					Calorias:(KCAL) <input type="text" name="calorias"
-						value="${producto.calorias }" /> <br>
+						value="${producto.calorias }"  required/> <br>
 				</p>
 				<br>
 				<p class="fw-bold">
 					Proteínas:(G) <input type="text" name="proteinas"
-						value="${producto.proteinas }" /> <br>
+						value="${producto.proteinas }" required /> <br>
 				</p>
 				<p class="fw-bold">
 					Cantidad: <input type="text" name="cantidad"
-						value="${producto.cantidad }" /> <br>
+						value="${producto.cantidad }"  required/> <br>
 				</p>
 				<p class="fw-bold">
 					Precio: <input type="text" name="precio"
-						value="${producto.precio }" /> <br>
+						value="${producto.precio }"  required/> <br>
 				</p>
 				<br> <input type="submit" class="btn btn-secondary"
 					value="Enviar" /> <a href="VerProductos" class="btn btn-dark">Volver</a>

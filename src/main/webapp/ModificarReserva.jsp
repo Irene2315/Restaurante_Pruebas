@@ -20,10 +20,17 @@
 	color: black;
 }
 
+body {
+	background-image: url('https://sp-ao.shortpixel.ai/client/to_auto,q_lossy,ret_img,w_1944,h_1024/https://h-o-m-e.org/wp-content/uploads/2023/01/carbone-nyc-reservations-1-1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
 .form-container {
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
 }
 </style>
 </head>
@@ -32,25 +39,30 @@
   <div class="form-container">
     <form method="POST" action="ModificarReserva">
       <h1 class="fw-bold">Modificar Reserva</h1>
+      <c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido la reserva incorrectamente!
+    						</div>
+	  </c:if>
       <p class="fw-bold">Nº Reserva:
-        <input type="hidden" name="nReserva" placeholder="id" value="${reserva.nReserva}">${reserva.nReserva}
+        <input type="hidden" name="nReserva"  value="${reserva.nReserva}"required>${reserva.nReserva}
         <br>
       </p>
       <p class="fw-bold">Fecha:
-        <input type="date" name="fecha" placeholder="fecha" value="${reserva.fecha}">
+        <input type="date" name="fecha"  value="${reserva.fecha}" required>
       </p>
       <p class="fw-bold">DNI:
-        <input type="hidden" name="dni" placeholder="dni" value="${reserva.cliente.dni}">${reserva.cliente.dni}
+        <input type="hidden" name="dni"  value="${reserva.cliente.dni}" required>${reserva.cliente.dni}
       </p>
       <p class="fw-bold">Nombre:
-        <input type="text" name="nombre" placeholder="nombre" value="${reserva.cliente.nombre}">
+        <input type="text" name="nombre"  value="${reserva.cliente.nombre}" required>
       </p>
       <p class="fw-bold">Telefono:
-        <input type="text" name="telefono" placeholder="telefono" value="${reserva.cliente.telefono}">
+        <input type="text" name="telefono" value="${reserva.cliente.telefono}" required>
       </p>
       <p class="fw-bold">Eventos:
-        <select name="evento">
-          <option value="0"></option>
+        <select name="evento" required>
+          <option value="" ></option>
           <c:forEach items="${eventos}" var="evento">
             <c:if test="${evento.cEvento == reserva.evento.cEvento}">
               <option value="${evento.cEvento}" selected> ${evento.nombre} </option>

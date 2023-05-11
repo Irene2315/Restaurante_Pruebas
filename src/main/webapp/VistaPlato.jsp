@@ -25,23 +25,34 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+body {
+	background-image: url('https://wallpapercave.com/wp/wp8645275.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
+}
 </style>
 </head>
-
 <body>
+
 	<div class="container">
-	<div class="form-container">
-		<h2 class="fw-bold">${producto.nombre }</h2>
+		<div class="form-container">
+			<h2 class="fw-bold">${plato.nombre}</h2>
 
-		<p class="fw-bold">
-			<b>CALORIAS:</b>${producto.calorias } KCAL
-		</p>
-		<p class="fw-bold">
-			<b>PROTEINAS:</b>${producto.proteinas} G
-		</p>
 
-		<a href="VerProductos" class="btn btn-dark">Volver</a>
+			<c:forEach items="${plato.productos}" var="producto">
+
+				<li class="list-group-item">${producto.nombre}</li>
+			</c:forEach>
+
+			<a href="VerPlatos" class="btn btn-dark" style="margin-top:10px;">Volver</a>
 		</div>
-		</div>
+	</div>
 </body>
 </html>

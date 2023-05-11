@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +16,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top:10px;
+	margin-top: 10px;
 	color: black;
 }
 
@@ -26,8 +25,19 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+body {
+	background-image: url('https://wallpapercave.com/wp/wp8645275.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
+}
 </style>
-
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,76 +74,56 @@
 	</nav>
 	<div class="container">
 		<div class="form-container">
-			<h1 class="fw-bold">GESTIONES EVENTOS</h1>
-			<div class="row 2">
+			<h1 class="fw-bold">GESTION DE PRODUCTOS</h1>
+			<table class="table">
 
-				<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
-					<div class="col-6">
-						<h1 class="fw-bold">Insertar Evento</h1>
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">cProducto</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">cantidad</th>
+						<th scope="col">precio</th>
 
-						<form method="POST" action="InsertarEvento">
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
+							<td><a href="RegistrarProducto" class="btn btn-dark">Registrar
+							</a></td>
+						</c:if>
 
+					</tr>
+				</thead>
+				<tbody>
 
-							<p>
-								Nombre: <input type="text" name="nombre" /> <br>
-							</p>
-							<br> <input type="submit" class="btn btn-secondary"
-								value="Insertar" />
+					<c:forEach items="${productos}" var="producto">
+						<tr>
+							<th scope="row"></th>
+							<td>${producto.cProducto}</td>
+							<td>${producto.nombre}</td>
+							<td>${producto.cantidad}</td>
+							<td>${producto.precio}</td>
 
+							<td><a href="VerProducto?cProducto=${producto.cProducto}"
+								class="btn btn-primary ">Ver </a></td>
+							<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
+								<td><a
+									href="ModificarProducto?cProducto=${producto.cProducto}"
+									class="btn btn-secondary ">Modificar </a></td>
+								<td><a
+									href="EliminarProducto?cProducto=${producto.cProducto}"
+									class="btn btn-danger">eliminar </a></td>
+							</c:if>
+						</tr>
 
-
-						</form>
-
-					</div>
-				</c:if>
-
-				<div class="col-6">
-
-					<h1 class="fw-bold">Ver Eventos</h1>
-
-
-
-					<form method="get" action="VerEventos">
-
-						<table class="table">
-
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">cEvento</th>
-									<th scope="col">nombre</th>
-									<th scope="col"></th>
-									<th scope="col"></th>
-
-
-
-								</tr>
-							</thead>
-							<tbody>
-
-								<c:forEach items="${eventos}" var="evento">
-									<tr>
-										<th scope="row"></th>
-										<td>${evento.cEvento}</td>
-										<td>${evento.nombre}</td>
-										<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
-											<td><a href="EliminarEvento?c_evento=${evento.cEvento}"
-												class="btn btn-danger">eliminar</a></td>
-
-										</c:if>
+					</c:forEach>
 
 
-									</tr>
 
-								</c:forEach>
-
-
-							</tbody>
-						</table>
-					</form>
-				</div>
-			</div>
+				</tbody>
+			</table>
 		</div>
 	</div>
+
 </body>
 </html>

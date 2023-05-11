@@ -33,10 +33,10 @@ public class LoginEmpleado extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean error = true;
+		boolean error = false;
 		//Cargar la vista de login
 		request.setAttribute("error", error);
-		request.getRequestDispatcher("Login/VistaLoginEmpleado.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaLoginEmpleado.jsp").forward(request, response);
 	}
 
 	/**
@@ -76,7 +76,9 @@ public class LoginEmpleado extends HttpServlet {
 			
 		}
 		else {
-			request.getRequestDispatcher("PaginaInicialCliente.jsp").forward(request, response);
+			Boolean error = true;
+			request.setAttribute("error",error);
+			request.getRequestDispatcher("VistaLoginEmpleado.jsp").forward(request, response);
 		}
 		
 		usuarioM.cerrar();

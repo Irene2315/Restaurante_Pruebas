@@ -17,16 +17,24 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 10px;
+	margin-top:10px;
 	color: black;
 }
 
+body {
+	background-image: url('https://wallpaperaccess.com/full/3014601.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
 .form-container {
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
 }
 </style>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -63,54 +71,75 @@
 	</nav>
 	<div class="container">
 		<div class="form-container">
+			<h1 class="fw-bold">GESTIONES EVENTOS</h1>
+			<div class="row 2">
 
-			<h1 class="fw-bold">GESTIONES RESERVAS</h1>
+				<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
+					<div class="col-6">
+						<h1 class="fw-bold">Insertar Evento</h1>
 
-			<h1 class="fw-bold">Ver Reservas</h1>
-
-			<form method="get" action="VerReservasUsuario">
-				<p>
-					DNI: <input type="text" name="DNI" value="${reserva.cliente.dni}" />
-					<input type="submit" class="btn-primary" value="Buscar">
-				</p>
-			</form>
-			<table class="table">
-
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">nReserva</th>
-						<th scope="col">Fecha</th>
-						<th scope="col">Evento</th>
-						<th scope="col"></th>
-						<th scope="col"></th>
+						<form method="POST" action="InsertarEvento">
 
 
-					</tr>
-				</thead>
-				<tbody>
-
-					<c:forEach items="${reservas}" var="reserva">
-						<tr>
-							<th scope="row"></th>
-							<td>${reserva.nReserva}</td>
-							<td>${reserva.fecha}</td>
-							<td>${reserva.evento.nombre}</td>
-							<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
-								<td><a href="ModificarReserva?nReserva=${reserva.nReserva}"
-									class="btn btn-secondary">modificar</a></td>
-								<td><a href="EliminarReserva?nReserva=${reserva.nReserva}"
-									class="btn btn-danger">eliminar</a></td>
-
-							</c:if>
-						</tr>
-
-					</c:forEach>
+							<p>
+								Nombre: <input type="text" name="nombre" required/> <br>
+							</p>
+							<br> <input type="submit" class="btn btn-secondary"
+								value="Insertar" />
 
 
-				</tbody>
-			</table>
 
+						</form>
+
+					</div>
+				</c:if>
+
+				<div class="col-6">
+
+					<h1 class="fw-bold">Ver Eventos</h1>
+
+
+
+					<form method="get" action="VerEventos">
+
+						<table class="table">
+
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">cEvento</th>
+									<th scope="col">nombre</th>
+									<th scope="col"></th>
+									<th scope="col"></th>
+
+
+
+								</tr>
+							</thead>
+							<tbody>
+
+								<c:forEach items="${eventos}" var="evento">
+									<tr>
+										<th scope="row"></th>
+										<td>${evento.cEvento}</td>
+										<td>${evento.nombre}</td>
+										<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
+											<td><a href="EliminarEvento?c_evento=${evento.cEvento}"
+												class="btn btn-danger">eliminar</a></td>
+
+										</c:if>
+
+
+									</tr>
+
+								</c:forEach>
+
+
+							</tbody>
+						</table>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

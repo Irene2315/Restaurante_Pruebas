@@ -1,6 +1,7 @@
 package controladorUsuarioUsuario;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -37,6 +38,7 @@ public class ModificarUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+		boolean error = false;
 
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("PaginaReservaCliente");
@@ -55,7 +57,7 @@ public class ModificarUsuario extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		request.setAttribute("usuario", usuario);
+		
 		
 		//conseguimos los roles del usuario
 				ModeloRolUsuario rolM = new ModeloRolUsuario();
@@ -63,9 +65,10 @@ public class ModificarUsuario extends HttpServlet {
 				ArrayList<RolUsuario> roles = rolM.getRolesUsuarios();
 				rolM.cerrar();
 				//enviamos los roles y cargamos la vista
-		request.setAttribute("roles", roles);
-				
-		request.getRequestDispatcher("Usuario/ModificarUsuario.jsp").forward(request, response);
+		request.setAttribute("usuario", usuario);
+		request.setAttribute("roles", roles);	
+		request.setAttribute("error", error);
+		request.getRequestDispatcher("ModificarUsuario.jsp").forward(request, response);
 	}
 			else {
 				response.sendRedirect("PaginaUsuario");
@@ -88,8 +91,18 @@ public class ModificarUsuario extends HttpServlet {
 		String contrasena =request.getParameter("contrasena");
 		String telefono = request.getParameter("telefono");
 		String correoTrabajo = request.getParameter("correoTrabajo");
-		
 		int rol = Integer.parseInt(request.getParameter("rol"));
+		boolean error = false;
+
+		if (telefono.length() != 9 || !telefono.substring(0, 9).matches("\\d+")) {
+			error = true;
+		} else if (!correoTrabajo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+			error = true;
+		}
+
+		
+		if (error==false) {
+		
 		//contruimos el usuario
 		usuario.setcUsuario(cUsuario);
 		usuario.setNombre(nombre);
@@ -109,6 +122,33 @@ public class ModificarUsuario extends HttpServlet {
 		modeloUsuario.cerrar();
 		
 		response.sendRedirect("VerUsuarios");
+		}
+		else {
+			int id = Integer.parseInt(request.getParameter("cUsuario"));
+			ModeloUsuario usuarioM = new ModeloUsuario();
+			Usuario usuario_2 = new Usuario();
+			usuarioM.conectar();
+			//se consigue los datos del viejo usuario por su id
+			try {
+				usuario_2 = usuarioM.getUsuario(id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			usuarioM.cerrar();
+			//conseguimos los roles del usuario
+			ModeloRolUsuario rolM = new ModeloRolUsuario();
+			rolM.conectar();
+			ArrayList<RolUsuario> roles = rolM.getRolesUsuarios();
+			rolM.cerrar();
+			//enviamos los roles y cargamos la vista
+			request.setAttribute("usuario", usuario_2);
+			request.setAttribute("roles", roles);
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("ModificarUsuario.jsp").forward(request, response);
+		}
+		
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package controladorUsuarioUsuario;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +38,7 @@ public class InsertarUsuario extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+		boolean error = false;
 
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("PaginaReservaCliente");
@@ -53,7 +55,8 @@ public class InsertarUsuario extends HttpServlet {
 		
 		//enviamos los roles y cargamos la vista
 		request.setAttribute("roles", roles);
-		request.getRequestDispatcher("Usuario/RegistrarUsuario.jsp").forward(request, response);
+		request.setAttribute("error", error);
+		request.getRequestDispatcher("RegistrarUsuario.jsp").forward(request, response);
 	}
 			else {
 				response.sendRedirect("PaginaUsuario");
@@ -74,6 +77,17 @@ public class InsertarUsuario extends HttpServlet {
 		
 		int rol = Integer.parseInt(request.getParameter("rol"));
 		
+		
+		boolean error = false;
+
+		if (telefono.length() != 9 || !telefono.substring(0, 9).matches("\\d+")) {
+			error = true;
+		} else if (!correoTrabajo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+			error = true;
+		}
+
+		
+		if (error==false) {
 		//contruimos el objeto de usuario
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
@@ -90,8 +104,21 @@ public class InsertarUsuario extends HttpServlet {
 		//se lo enviamos al modelo para que lo inserte en la BDD
 		modeloUsuario.insertarUsuario(usuario);
 		modeloUsuario.cerrar();
-		//volvemos a la vista principal
+		
 		response.sendRedirect("VerUsuarios");
+		
+		
+	}
+		else {
+		ModeloRolUsuario rolM = new ModeloRolUsuario();
+		rolM.conectar();
+		/*conseguimos el arraylist de los roles*/
+		ArrayList<RolUsuario> roles = rolM.getRolesUsuarios();
+		rolM.cerrar();
+		request.setAttribute("roles", roles);
+		request.setAttribute("error", error);
+		request.getRequestDispatcher("RegistrarUsuario.jsp").forward(request, response);
+		}
 	}
 
 }

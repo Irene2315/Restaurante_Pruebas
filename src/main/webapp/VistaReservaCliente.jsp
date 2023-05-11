@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,20 +25,13 @@ body {
 	color: white;
 }
 
-.carousel-control-prev-icon {
-	padding: 5px;
-	background-color: gray;
-	box-shadow: 0px 0px 10px black;
-	color: black !important;
-	background-color: gray;
-}
-
-.carousel-control-next-icon {
-	padding: 5px;
-	background-color: gray;
-	box-shadow: 0px 0px 10px black;
-	color: black !important;
-	background-color: gray;
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: #373737;
+	color: white;
+	margin-bottom: 50px;
 }
 
 .navbar {
@@ -53,14 +49,13 @@ body {
 .nav-link:hover {
 	color: black;
 }
-
-.ubicacion {
-	margin-top: 70px;
-}
 </style>
+
+
+
 </head>
 <body>
-	<!-- Barra de navegación -->
+	<!-- Barra de navegaciÃ³n -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="PaginaInicialCliente.jsp"
 			style="margin-left: 10px;">Herrero Martinez</a>
@@ -78,72 +73,157 @@ body {
 				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="../PaginaReservaCliente">Reservas</a></li>
+					href="PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
 	</nav>
+	
+
+	<section style="margin-top: 100px;">
+
+		<!-- Fila principal -->
+		<div class="row" style="width:100%;">
+
+			<!-- Columna con imagen y texto -->
+			<div class="col-12 col-lg-6 text-center">
+				<img
+					src="https://www.gotokyo.org/es/see-and-do/drinking-and-dining/images/826_0774_1.jpg"
+					alt="Imagen de muestra" class="img-fluid">
+
+				<p style="color: white;">Para reservar una mesa en nuestro
+					restaurante, simplemente complete el formulario en linea o llamenos
+					directamente. Nuestro amable personal estara encantado de ayudarle
+					a encontrar la mesa perfecta para su ocasion especial o simplemente
+					para disfrutar de una cena inolvidable con amigos y familiares.</p>
+			</div>
+
+			<!-- Columna con formulario y buscador -->
+			<div class="col-12 col-lg-6">
+
+				<div class="form-container">
+					<div class="row" >
 
 
-	<!-- Página de inicio -->
-	<header class="jumbotron jumbotron-fluid bg-black">
-		<div class="ubicacion">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<h2>Ubicación</h2>
-						<p>Nuestro restaurante está ubicado en la hermosa concha,
-							justo al lado de la playa. Esta ubicación privilegiada nos
-							permite ofrecer a nuestros clientes una experiencia culinaria
-							inolvidable en un ambiente único y exclusivo.</p>
+						<div class="col-lg-6">
+							<h1 class="fw-bold">Realizar Reserva</h1>
+							
 
-						<h2>Cómo llegar</h2>
-						<p>Puede llegar al restaurante en coche o en transporte
-							público. Si viene en coche, puede utilizar la siguiente dirección
-							para su GPS: Kontxa Pasealekua, s/n Paseo de La Concha, s/n
-							Edificio La Perla, Kontxa Pasealekua, 16, 20007 Donostia,
-							Gipuzkoa. También puede llegar en autobús, con la parada más
-							cercana a solo unos minutos a pie del restaurante.</p>
-					</div>
-					<div class="col-md-4">
-						<h2>Horarios</h2>
-						<p>
-							<strong>Lunes a jueves:</strong> de 12:00 pm a 3:00 pm y de 7:00
-							pm a 11:00 pm
-						</p>
-						<p>
-							<strong>Viernes y sábados:</strong> de 12:00 pm a 3:00 pm y de
-							7:00 pm a 12:00 am
-						</p>
-						<p>
-							<strong>Domingos:</strong> de 12:00 pm a 3:00 pm y de 7:00 pm a
-							11:00 pm
-						</p>
-					</div>
-				</div>
+							<form method="get" action="CargarUsuario">
+								<p class="fw-bold" >
+									Buscar dni <input type="text" name="DNI" style="margin-left: 80px;" /><br> <br> 
+									<input type="submit" class="btn-primary" value="Buscar" style="margin-left: 170px;">
+								</p>
+								
+							</form>
+							<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido la reserva incorrectamente!
+    						</div>
+							</c:if>
+							<form method="POST" action="InsertarReserva">
 
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="mapa">
-							<h2>Mapa</h2>
-							<div class="d-flex justify-content-center">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1410.1572701887817!2d-1.991576532071527!3d43.31517957430266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51baab3c59e249%3A0x15584aada0b2ae25!2sLa%20Perla%20Bar%20Restaurante!5e0!3m2!1ses!2ses!4v1683395088640!5m2!1ses!2ses"
-									width="100%" height="450" style="border: 0;"></iframe>
-							</div>
+								<p class="fw-bold" style="margin-left: 30px;">
+									DNI: <input type="text" name="DNI2" value="${cliente.dni}" style="margin-left: 5px;"required ><br>
+								</p>
+								<p class="fw-bold" style="margin-left: 1px;">
+									Nombre: <input type="text" name="nombre"
+										value="${cliente.nombre}" style="margin-left: 5px;" required  /> <br> 
+								</p>
+								
+								<p class="fw-bold" style="margin-left: 1px;">
+									Apellido: <input type="text" name="apellido"
+										value="${cliente.apellido}" style="margin-left: 5px;" required  /> <br>
+								</p>
+								
+								<p class="fw-bold" style="margin-left: 1px;">
+									Telefono: <input type="text" name="telefono"
+										value="${cliente.telefono}" style="margin-left: 5px;" required  /> <br>
+								</p>
+								
+								<p class="fw-bold" style="margin-left: 1px;">
+									Correo: <input type="text" name="correo" 
+										value="${cliente.correo}" style="margin-left: 20px;"required  /> <br>
+								</p>
+								<br>
+								<p class="fw-bold" style="margin-left: 65px;">
+									Fecha: <input type="date" name="fecha" style="margin-left: 5px;" required /> <br>
+								</p>
+								<br><label class="fw-bold"  for="evento" style="margin-left: 60px;">Evento:</label>
+									<select name="evento" id="evento" required>
+  											<option value=""></option>
+  											<c:forEach items="${eventos}" var="evento">
+    										<option value="${evento.cEvento}">${evento.nombre}</option>
+  										</c:forEach>
+
+								
+								</select>  <br> <br><input type="submit" class="btn btn-secondary" value="Reservar"  style="margin-left: 150px;"/>
+
+
+							</form>
+							
+							
+							
+							
+						</div>
+
+
+						<div class="col-lg-6">
+							<h1 class="fw-bold">Ver Reservas</h1>
+
+							<form method="get" action="VerReservas">
+								<p class="fw-bold">
+									DNI: <input type="text" name="DNI"
+										value="${reserva.cliente.dni}" /> <input type="submit"
+										class="btn-primary" value="Buscar">
+								</p>
+							</form>
+
+							<table class="table"  style="color:white">
+
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">nReserva</th>
+										<th scope="col">Fecha</th>
+										<th scope="col">Evento</th>
+
+
+									</tr>
+								</thead>
+								<tbody>
+
+									<c:forEach items="${reservas}" var="reserva">
+										<tr>
+											<th scope="row"></th>
+											<td>${reserva.nReserva}</td>
+											<td>${reserva.fecha}</td>
+											<td>${reserva.evento.nombre}</td>
+
+
+
+										</tr>
+
+									</c:forEach>
+
+
+								</tbody>
+							</table>
+
 						</div>
 					</div>
 				</div>
+
 			</div>
+
 		</div>
 
-		<br> <br> <br> <br>
-	</header>
+	</section>
 	<!-- Footer -->
 	<footer class="text-center text-lg-start bg-white text-muted">
 		<!-- Section: Social media -->
@@ -245,7 +325,7 @@ body {
 		<!-- Copyright -->
 		<div class="text-center p-4"
 			style="background-color: rgba(0, 0, 0, 0.025);">
-			© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
+			Â© 2023 Copyright: <a class="text-reset fw-bold">HerreroMartinez.com</a>
 		</div>
 		<!-- Copyright -->
 	</footer>

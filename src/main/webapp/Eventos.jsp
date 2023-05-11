@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,39 +29,51 @@ body {
 	top: 0; /* Position the navbar at the top of the page */
 	width: 100%; /* Full width */
 	z-index: 3;
+}
 
-}
-.navbar-band{
-	padding: 40%;
-}
 .navbar a {
 	color: black;
-
 }
 
 .nav-link:hover {
 	color: black;
 }
-.carta{
-	margin-bottom:20px;
+
+.navbar-toggler-icon {
+	color: red;
+	z-index: 4;
 }
-.card-body{
-	background-color: #3f3f3f;
-	
+
+.card {
+	position: relative;
+	overflow: hidden;
+	margin-top: 20px;
 }
+
+.card-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card:hover .card-overlay {
+	opacity: 1;
+}
+
 .card-text {
-	color: white;
+	text-align: center;
+	font-size: 1rem;
 }
 
-.card:hover {
-	transform: scale(1.05);
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-	transition: all 0.3s ease-in-out;
-}
-
-.col h1 p {
-	color: white;
-}
 </style>
 </head>
 <body>
@@ -82,90 +95,123 @@ body {
 				<li class="nav-item"><a class="nav-link" href="Menu.jsp">Menu</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="../PaginaReservaCliente">Reservas</a></li>
+					href="PaginaReservaCliente">Reservas</a></li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
 				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicacion
 						y horarios</a></li>
-				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="margin-left: 380px; color:white;">SESION EMPLEADO</a></li>
+				<li class="nav-item"><a href="LoginEmpleado" class="btn btn-dark" style="color:white;">SESION EMPLEADO</a></li>
 
 			</ul>
 		</div>
 	</nav>
 
+
 	<!-- Página de inicio -->
 	<header class="jumbotron jumbotron-fluid bg-black">
-
-		<br> <br> <br>
-		<br>
-
+		<br> <br> <br> <br>
 		<div class="container">
-			<div class="row ">
-				<div class="col text-center">
-					<h1>El Origen</h1>
-					<p>"Un cocinero se convierte en artista cuando tiene cosas que
-						decir a través de sus platos, como un pintor en un cuadro".</p>
-					<p>-Joan Miró-</p>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1>Eventos Especiales</h1>
+					<p>En nuestro restaurante no solo nos enfocamos en brindar
+						deliciosas comidas y cenas, sino que también estamos preparados
+						para hacer de tus eventos especiales una experiencia inolvidable.
+						Desde bodas y bautizos hasta fiestas de cumpleaños y reuniones
+						empresariales, estamos equipados para crear un ambiente elegante y
+						acogedor que dejará una impresión duradera en tus invitados.
+						Nuestro equipo de profesionales está dispuesto a ayudarte a
+						planificar y coordinar todos los detalles de tu evento para que
+						puedas disfrutar de una celebración sin preocupaciones. Ya sea que
+						busques una cena íntima o una gran fiesta, nuestro restaurante es
+						el lugar perfecto para celebrar tus momentos más importantes.</p>
 				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="row align-items-stretch">
-				<div class="carta col-md-4">
-					<div class="card h-100">
+		
+		
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
 						<img class="card-img-top"
-							src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/62/fd/a5/el-peine-de-los-vientos.jpg?w=700&h=500&s=1"
-							alt="Imagen 1">
-						<div class="card-body">
-							<p class="card-text">En nuestro restaurante ubicado en la
-								costa vasca, ofrecemos una experiencia culinaria única en la que
-								se fusionan los sabores tradicionales vascos con técnicas
-								modernas. Nuestro compromiso con ingredientes frescos y locales
-								se refleja en cada plato que servimos, y nuestro ambiente
-								acogedor y amigable hace que cada visita sea una experiencia
-								inolvidable.</p>
-						</div>
-					</div>
-				</div>
-				<div class="carta col-md-4">
-					<div class="card h-100">
-						<img class="card-img-top"
-							src="https://mxcity.mx/wp-content/uploads/2021/03/salon-bach.jpeg"
-							alt="Imagen 2">
-						<div class="card-body">
-							<p class="card-text">Nos enorgullecemos de nuestra larga
-								historia y tradición culinaria. Desde nuestro fundador, que
-								comenzó este negocio como una pequeña taberna hace décadas,
-								hasta nuestro equipo de chefs y personal actual, todos hemos
-								trabajado duro para mantener viva la esencia y la autenticidad
-								de la cocina vasca.</p>
-						</div>
-					</div>
-				</div>
-				<div class="carta col-md-4">
-					<div class="card h-100">
-						<img class="card-img-top"
-							src="https://www.saberysabor.com/files/uploads/images/Noticias/2022/02/Ramces-Gonzalez-Diego-Millan.jpg"
-							alt="Imagen 3">
-						<div class="card-body">
-							<p class="card-text">Sabemos que el personal es clave para
-								crear una experiencia gastronómica excepcional. Nuestro equipo
-								de chefs y camareros altamente capacitados están comprometidos
-								con ofrecer un servicio excepcional y una atención al cliente de
-								primera clase. Desde nuestra selección de vinos hasta nuestros
-								platos recomendados, cada miembro del personal está capacitado
-								para proporcionarte la mjor experiencia posible en nuestro
-								restaurante.</p>
+							src="https://s1.1zoom.me/b5050/145/350089-admin_1920x1080.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>BODAS</h1>
+									<p class="card-text text-center">En nuestro restaurante,
+										ofrecemos una experiencia única y memorable para su boda.
+										Contamos con un equipo de expertos en eventos que se encargará
+										de cada detalle para asegurarnos de que su día especial sea
+										perfecto. Ofrecemos opciones de menú personalizadas para
+										satisfacer los gustos y necesidades de todos sus invitados.</p>
+								</div>
+							</div>
 
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<img class="card-img-top"
+							src="https://grupo1844.com/wp-content/uploads/2022/09/slider-transporte-cenas-empresa.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>CENA EMPRESA</h1>
+									<p class="card-text text-center">En nuestro restaurante,
+										ofrecemos la opción perfecta para su evento de fin de año.
+										Nuestras cenas de empresa son la forma ideal para celebrar el
+										éxito de su empresa y disfrutar de una deliciosa comida en un
+										ambiente relajado y acogedor.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<img class="card-img-top"
+							src="https://migueldomecq.com/wp-content/uploads/2022/03/Que-incluye-una-cata-de-vino-en-Jerez.-En-que-consiste.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>CATA VINOS</h1>
+									<p class="card-text text-center">¿Eres un amante del vino y
+										quieres descubrir nuevos sabores y aromas? En nuestro
+										restaurante ofrecemos experiencias de cata de vinos para que
+										puedas disfrutar de una selección de los mejores vinos de la
+										región.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<img class="card-img-top"
+								src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2022/03/primera-comunion-2661919.jpg"
+								alt="Imagen de ejemplo">
+							<div class="card-overlay">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<h1>COMUNION</h1>
+										<p class="card-text text-center">Celebre la Primera
+											Comunión de su hijo o hija en nuestro restaurante y disfrute
+											de una experiencia inolvidable. Nos aseguraremos de que el
+											día de su hijo o hija sea especial y memorable al ofrecer
+											opciones de menú adaptadas a las necesidades de los más
+											pequeños y a sus invitados adultos.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-
-
-
+		
 
 
 		<br> <br> <br> <br>
