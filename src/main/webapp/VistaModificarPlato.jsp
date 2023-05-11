@@ -25,6 +25,27 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top:10px;
+	
+	color: black;
+}
+
+body {
+	background-image: url('https://wallpapercave.com/wp/wp8645275.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
+}
 </style>
 </head>
 <body>

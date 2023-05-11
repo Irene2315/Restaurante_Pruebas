@@ -23,6 +23,17 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+body {
+	background-image: url('https://wallpaperaccess.com/full/7066812.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.form-container {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
+}
 </style>
 </head>
 <body>

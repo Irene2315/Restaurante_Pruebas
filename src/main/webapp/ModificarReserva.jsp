@@ -20,10 +20,17 @@
 	color: black;
 }
 
+body {
+	background-image: url('https://sp-ao.shortpixel.ai/client/to_auto,q_lossy,ret_img,w_1944,h_1024/https://h-o-m-e.org/wp-content/uploads/2023/01/carbone-nyc-reservations-1-1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
 .form-container {
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-color: white;
 }
 </style>
 </head>
