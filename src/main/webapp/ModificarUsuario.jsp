@@ -74,7 +74,9 @@ body {
 						value="${usuario.correoTrabajo}" required  /> <br>
 				</p>
 				<br>
-				<p>
+				
+				<p> <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
+    							
 					Trabajos: <select name="rol" required >
 						<option value="0"></option>
 						<c:forEach items="${roles}" var="rol">
@@ -86,9 +88,11 @@ body {
 							</c:if>
 						</c:forEach>
 					</select>
+					
+					 </c:if>
 				</p>
-				<br> <input type="submit" class="btn btn-secondary"
-					value="Enviar" /> <a href="VerUsuarios" class="btn btn-dark">Volver</a>
+				<br> <input type="submit" class="btn btn-primary"  value="Enviar" /> 
+					<a href="VerUsuarios" class="btn btn-dark" onclick="history.go(-1);return false;" >Volver </a>
 			</form>
 		</div>
 	</div>

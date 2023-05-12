@@ -1,7 +1,7 @@
-package controladorUsuarioPl;
+package controladorUsuarioUsuario;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,22 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import clases.Plato;
-import clases.Producto;
 import clases.Usuario;
-import modeloUsuario.ModeloUsuarioPl;
+import modeloUsuario.ModeloUsuario;
 
 /**
- * Servlet implementation class VerPlato
+ * Servlet implementation class VerUsuario
  */
-@WebServlet("/VerPlato")
-public class VerPlato extends HttpServlet {
+@WebServlet("/VerUsuario")
+public class VerUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VerPlato() {
+    public VerUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,28 +34,33 @@ public class VerPlato extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
-
+		
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("PaginaReservaCliente");
-		} else {	
+		} else {
+			int id = Integer.parseInt(request.getParameter("cUsuario"));
 			
-		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
-		Plato plato = new Plato();
-		//ArrayList <Producto> productos = new ArrayList<>();
-		
-		ModeloUsuarioPl platoM = new ModeloUsuarioPl();
-		
-		platoM.conectar();
-		
-		//productos =usuarioM.getProductosPlato(cPlato);
-		plato = platoM.getPlato(cPlato);
-		
-		platoM.cerrar();
-		
-		//request.setAttribute("productos", productos);
-		request.setAttribute("plato", plato);
-		
-		request.getRequestDispatcher("VistaPlato.jsp").forward(request, response);	
+			
+			
+				Usuario usuario = new Usuario();
+				
+				ModeloUsuario usuarioM = new ModeloUsuario();
+				
+				usuarioM.conectar();
+				
+				try {
+					usuario = usuarioM.getUsuario(id);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				usuarioM.cerrar();
+			
+			request.setAttribute("usuario", usuario);
+			
+			request.getRequestDispatcher("VistaUsurio.jsp").forward(request, response);
+			
 		}
 	}
 
