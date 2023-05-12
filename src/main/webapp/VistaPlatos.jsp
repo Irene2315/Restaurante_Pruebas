@@ -73,25 +73,28 @@ body {
 					<li class="nav-item"><a class="nav-link active"
 						href="PaginaPlato">GESTIONAR PLATOS</a></li>
 				</ul>
-				<div class="nav-item dropdown" style="margin-left: 240px;">
-					<a href="#" data-toggle="dropdown"
-						class="nav-item nav-link dropdown-toggle user-action"
-						style="color: white;"> ${sessionScope.usuarioLogueado.nombre}
-						${sessionScope.usuarioLogueado.apellido}<b class="caret"></b>
-					</a>
-					<div class="dropdown-menu">
-						<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i>
-							Perfil</a> <a
-							href="ModificarUsuario?cUsuario=${sessionScope.usuarioLogueado.cUsuario} class="dropdown-item"><i
-							class="fa  fa-pencil "></i> Editar Perfil</a>
-						<div class="divider dropdown-divider"></div>
-						<a href="CerrarSesion" class="dropdown-item"><i
-							class="material-icons">&#xE8AC;</i> Cerrar Sesion</a>
+				
+					<div class="nav-item dropdown" style="margin-left: 240px;">
+						<a href="#" data-toggle="dropdown"
+							class="nav-item nav-link dropdown-toggle user-action"
+							style="color: white;"> ${sessionScope.usuarioLogueado.nombre}
+							${sessionScope.usuarioLogueado.apellido}<b class="caret"></b>
+						</a>
+						<div class="dropdown-menu">
+							<a href="VerUsuario?cUsuario=${sessionScope.usuarioLogueado.cUsuario}" class="dropdown-item"><i class="fa fa-user-o"></i>
+								Perfil</a> <a
+								href="ModificarUsuario?cUsuario=${sessionScope.usuarioLogueado.cUsuario}"
+								class="dropdown-item"><i class="fa  fa-pencil "></i> Editar
+								Perfil</a>
+							<div class="divider dropdown-divider"></div>
+							<a href="CerrarSesion" class="dropdown-item"><i
+								class="material-icons">&#xE8AC;</i> Cerrar Sesion</a>
+						</div>
 					</div>
 				</div>
 
 			</div>
-		</div>
+		
 	</nav>
 	<div class="container">
 		<div class="form-container">

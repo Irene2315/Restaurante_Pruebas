@@ -12,17 +12,21 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
 .container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top:10px;
+	margin-top: 10px;
 	color: black;
 }
 
@@ -32,6 +36,7 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 }
+
 .form-container {
 	padding: 20px;
 	border-radius: 10px;
@@ -43,44 +48,53 @@ body {
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="PaginaUsuario">GESTIONAR USUARIOS</a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link active" href="PaginaEvento" tabindex="-1" aria-disabled="true">GESTIONAR EVENTOS</a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link active" href="PaginaReservaUsuario">GESTIONAR RESERVAS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="PaginaProductos">GESTIONAR PRODUCTOS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="PaginaPlato">GESTIONAR PLATOS</a>
-              </li>
-            </ul>
-            <div class="nav-item dropdown" style="margin-left:240px;">
-				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" style="color: white;"> ${sessionScope.usuarioLogueado.nombre} ${sessionScope.usuarioLogueado.apellido}<b class="caret" ></b></a>
-				<div class="dropdown-menu">
-					<a href="ModificarUsuario" class="dropdown-item"><i class="fa fa-user-o"></i> Perfil</a>
-					<a href="ModificarUsuario?cUsuario=${sessionScope.usuarioLogueado.cUsuario}" class="dropdown-item"><i class="fa  fa-pencil "></i> Editar Perfil</a>
-					<div class="divider dropdown-divider"></div>
-					<a href="CerrarSesion" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Cerrar Sesion</a>
+
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="PaginaUsuario">GESTIONAR USUARIOS</a></li>
+
+					<li class="nav-item"><a class="nav-link active"
+						href="PaginaEvento" tabindex="-1" aria-disabled="true">GESTIONAR
+							EVENTOS</a></li>
+
+					<li class="nav-item"><a class="nav-link active"
+						href="PaginaReservaUsuario">GESTIONAR RESERVAS</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						href="PaginaProductos">GESTIONAR PRODUCTOS</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						href="PaginaPlato">GESTIONAR PLATOS</a></li>
+				</ul>
+
+				<div class="nav-item dropdown" style="margin-left: 240px;">
+					<a href="#" data-toggle="dropdown"
+						class="nav-item nav-link dropdown-toggle user-action"
+						style="color: white;"> ${sessionScope.usuarioLogueado.nombre}
+						${sessionScope.usuarioLogueado.apellido}<b class="caret"></b>
+					</a>
+					<div class="dropdown-menu">
+						<a
+							href="VerUsuario?cUsuario=${sessionScope.usuarioLogueado.cUsuario}"
+							class="dropdown-item"><i class="fa fa-user-o"></i> Perfil</a> <a
+							href="ModificarUsuario?cUsuario=${sessionScope.usuarioLogueado.cUsuario}"
+							class="dropdown-item"><i class="fa  fa-pencil "></i> Editar
+							Perfil</a>
+						<div class="divider dropdown-divider"></div>
+						<a href="CerrarSesion" class="dropdown-item"><i
+							class="material-icons">&#xE8AC;</i> Cerrar Sesion</a>
+					</div>
 				</div>
+
 			</div>
-            
-          </div>
-        </div>
- </nav>
+		</div>
+	</nav>
 	<div class="container">
 		<div class="form-container">
 			<h1 class="fw-bold">GESTIONES EVENTOS</h1>
@@ -94,7 +108,7 @@ body {
 
 
 							<p>
-								Nombre: <input type="text" name="nombre" required/> <br>
+								Nombre: <input type="text" name="nombre" required /> <br>
 							</p>
 							<br> <input type="submit" class="btn btn-secondary"
 								value="Insertar" />

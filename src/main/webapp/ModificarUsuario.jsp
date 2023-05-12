@@ -91,8 +91,7 @@ body {
 					
 					 </c:if>
 				</p>
-				<br> <input type="submit"  
-					value="Enviar" /> 
+				<br> <input type="submit" class="btn btn-primary"  value="Enviar" /> 
 					<a href="VerUsuarios" class="btn btn-dark" onclick="history.go(-1);return false;" >Volver </a>
 			</form>
 		</div>
