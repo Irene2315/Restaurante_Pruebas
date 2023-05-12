@@ -57,17 +57,19 @@ public class ModificarUsuario extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
+		request.setAttribute("usuario", usuario);
+		request.setAttribute("error", error);
+		if (usuarioLogueado.getRol().getId()==(1)) {
 		//conseguimos los roles del usuario
 				ModeloRolUsuario rolM = new ModeloRolUsuario();
 				rolM.conectar();
 				ArrayList<RolUsuario> roles = rolM.getRolesUsuarios();
 				rolM.cerrar();
 				//enviamos los roles y cargamos la vista
-		request.setAttribute("usuario", usuario);
+		
 		request.setAttribute("roles", roles);	
-		request.setAttribute("error", error);
+		}
+		
 		request.getRequestDispatcher("ModificarUsuario.jsp").forward(request, response);
 	}
 			else {
