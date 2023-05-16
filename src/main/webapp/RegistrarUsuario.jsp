@@ -23,11 +23,7 @@
 	color: black;
 }
 
-body {
-	background-image: url('https://wallpaperaccess.com/full/7066812.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-}
+
 .form-container {
 	padding: 20px;
 	border-radius: 10px;
