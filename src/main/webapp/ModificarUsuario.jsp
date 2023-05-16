@@ -92,7 +92,7 @@ body {
 					 </c:if>
 					 <c:if test="${sessionScope.usuarioLogueado.rol.id != 1}">
 					 	<p class="fw-bold">
-						Tarbajo: ${usuario.rol.nombre} <input type="hidden" name="rol"
+						Trabajo: ${usuario.rol.nombre} <input type="hidden" name="rol"
 						value="${usuario.rol.id}" /> <br>
 					 </c:if>
 				</p>
