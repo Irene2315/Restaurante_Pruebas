@@ -23,7 +23,11 @@
 	color: black;
 }
 
-
+body {
+	background-image: url('https://wallpaperaccess.com/full/7066812.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 .form-container {
 	padding: 20px;
 	border-radius: 10px;
@@ -36,7 +40,11 @@
 	<div class="container">
 		<div class="form-container">
 			<h1 class="fw-bold">Registrar Usuario</h1>
-			
+			<c:if test="${error eq true}">
+    						<div class="alert alert-danger" role="alert">
+        					Has introducido el usuario incorrectamente!
+    						</div>
+				</c:if>
 			<form method="POST" action="InsertarUsuario">
 
 				<p>

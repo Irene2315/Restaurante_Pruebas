@@ -90,6 +90,11 @@ body {
 					</select>
 					
 					 </c:if>
+					 <c:if test="${sessionScope.usuarioLogueado.rol.id != 1}">
+					 	<p class="fw-bold">
+						Tarbajo: ${usuario.rol.nombre} <input type="hidden" name="rol"
+						value="${usuario.rol.id}" /> <br>
+					 </c:if>
 				</p>
 				<br> <input type="submit" class="btn btn-primary"  value="Enviar" /> 
 					<a href="VerUsuarios" class="btn btn-dark" onclick="history.go(-1);return false;" >Volver </a>
